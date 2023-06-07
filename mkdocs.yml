@@ -1,0 +1,19 @@
+site_name: Communities of Practice
+theme:
+  name: material
+  features:
+    - content.action.edit
+plugins:
+  - kroki
+  - git-revision-date-localized:
+      enabled: !ENV [CI, false]
+      enable_creation_date: true
+      type: timeago
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+repo_url: https://github.com/acodeninja/community-of-practice-template
+edit_uri: edit/main/docs/
