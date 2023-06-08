@@ -1,3 +1,9 @@
+---
+hide:
+  - navigation
+  - toc
+---
+
 !!! danger "Note!"
 
     This documentation is a work in progress. 
