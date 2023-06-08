@@ -12,11 +12,11 @@ help:
 
 .PHONY: build ## Build the static site
 build: install
-	@docker run -it --rm -v $(shell pwd):/content cps/documentation-builder build
+	@docker run -it --rm -v "$(shell pwd):/content" --env "CI=true" cps/documentation-builder build
 
 .PHONY: dev ## Run a local developer server
 dev: install
-	@open http://localhost:8000 & docker run -it --rm -v $(shell pwd):/content -p 8000:8000 cps/documentation-builder serve -a 0.0.0.0:8000
+	@docker run -it --rm -v "$(shell pwd):/content" -p 8000:8000 cps/documentation-builder dev
 
 .PHONY: install ## Build the docker image used to build or serve the docs
 install: .built
