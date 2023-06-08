@@ -5,6 +5,8 @@ edit_uri: edit/main/docs/
 
 theme:
   name: material
+  custom_dir: overrides
+  logo: assets/images/logo.svg
   features:
     - content.action.edit
 
