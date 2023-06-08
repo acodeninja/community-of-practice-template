@@ -1,0 +1,27 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+        with:
+          fetch-depth: 0
+
+      - name: Build 🔧
+        run: |
+          git worktree add -B gh-pages site origin/gh-pages
+          make build
+
+      - name: Deploy 🚀
+        run: |
+          cd site
+          git add .
+          git config --global user.name "acode.ninja deployer"
+          git config --global user.email "deployer@acode.ninja"
+          git commit -m "Publishing changes"
+          git push
