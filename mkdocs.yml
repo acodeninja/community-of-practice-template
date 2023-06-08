@@ -1,8 +1,12 @@
 site_name: Communities of Practice
+repo_url: https://github.com/acodeninja/community-of-practice-template
+edit_uri: edit/main/docs/
+
 theme:
   name: material
   features:
     - content.action.edit
+
 plugins:
   - kroki
   - git-revision-date-localized:
@@ -13,7 +17,4 @@ plugins:
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
   - attr_list
-repo_url: https://github.com/acodeninja/community-of-practice-template
-edit_uri: edit/main/docs/
