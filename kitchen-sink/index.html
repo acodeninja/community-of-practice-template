@@ -135,7 +135,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -532,6 +534,8 @@
             
             
               
+                
+              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -678,21 +682,25 @@
 annotated.</p>
 <ul>
 <li><abbr title="Web Content Accessibility Guidelines">WCAG</abbr></li>
-<li>WIFI</li>
+<li><abbr title="Not a Number">NaN</abbr></li>
 <li><abbr title="World Wide Web Consortium">W3C</abbr></li>
 </ul>
+<p>If an abbreviation is missing, just add it to the <code>snippets/abbreviations.md</code> file.</p>
 <div class="admonition warning">
 <p class="admonition-title">Only in production!</p>
 <p>The abbreviations will only render when you run <code>make build</code>, they do not show with <code>make dev</code>.</p>
 </div>
 <h2 id="diagrams">Diagrams<a class="headerlink" href="#diagrams" title="Permanent link">&para;</a></h2>
+<p>Diagramming uses the <a href="https://mermaid.js.org/intro/">mermaid</a> library. This template uses version 9.4.3.</p>
 <h3 id="flowchart">Flowchart<a class="headerlink" href="#flowchart" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/flowchart.md">Documentation</a></p>
 <pre class="mermaid"><code>flowchart LR
     A[Hard edge] --&gt;|Link text| B(Round edge)
     B --&gt; C{Decision}
     C --&gt;|One| D[Result one]
     C --&gt;|Two| E[Result two]</code></pre>
 <h3 id="sequence-diagram">Sequence Diagram<a class="headerlink" href="#sequence-diagram" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/sequenceDiagram.md">Documentation</a></p>
 <pre class="mermaid"><code>sequenceDiagram
     par Alice to Bob
         Alice-&gt;&gt;Bob: Hello guys!
@@ -702,6 +710,7 @@ annotated.</p>
     Bob--&gt;&gt;Alice: Hi Alice!
     John--&gt;&gt;Alice: Hi Alice!</code></pre>
 <h3 id="class-diagram">Class Diagram<a class="headerlink" href="#class-diagram" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/classDiagram.md">Documentation</a></p>
 <pre class="mermaid"><code>classDiagram
     note "From Duck till Zebra"
     Animal &lt;|-- Duck
@@ -726,6 +735,7 @@ annotated.</p>
         +run()
     }</code></pre>
 <h3 id="state-diagram">State Diagram<a class="headerlink" href="#state-diagram" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/stateDiagram.md">Documentation</a></p>
 <pre class="mermaid"><code>stateDiagram
     direction LR
     [*] --&gt; A
@@ -737,6 +747,7 @@ annotated.</p>
     }
     B --&gt; D</code></pre>
 <h3 id="entity-relationship">Entity Relationship<a class="headerlink" href="#entity-relationship" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/entityRelationshipDiagram.md">Documentation</a></p>
 <pre class="mermaid"><code>erDiagram
     CUSTOMER ||--o{ ORDER : places
     CUSTOMER {
@@ -755,6 +766,7 @@ annotated.</p>
         float pricePerUnit
     }</code></pre>
 <h3 id="user-journey">User Journey<a class="headerlink" href="#user-journey" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/userJourney.md">Documentation</a></p>
 <pre class="mermaid"><code>journey
     title My working day
     section Go to work
@@ -765,6 +777,7 @@ annotated.</p>
       Go downstairs: 5: Me
       Sit down: 5: Me</code></pre>
 <h3 id="gantt">Gantt<a class="headerlink" href="#gantt" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/gantt.md">Documentation</a></p>
 <pre class="mermaid"><code>gantt
     dateFormat  YYYY-MM-DD
     title       Adding GANTT diagram functionality to mermaid
@@ -796,6 +809,7 @@ annotated.</p>
     Add gantt diagram to demo page      :20h
     Add another diagram to demo page    :48h</code></pre>
 <h3 id="pie-chart">Pie Chart<a class="headerlink" href="#pie-chart" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/pie.md">Documentation</a></p>
 <pre class="mermaid"><code>pie showData
     title Key elements in Product X
     "Calcium" : 42.96
@@ -803,6 +817,7 @@ annotated.</p>
     "Magnesium" : 10.01
     "Iron" :  5</code></pre>
 <h3 id="requirement">Requirement<a class="headerlink" href="#requirement" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/requirementDiagram.md">Documentation</a></p>
 <pre class="mermaid"><code>requirementDiagram
 
     requirement test_req {
@@ -871,6 +886,7 @@ annotated.</p>
     test_entity3 - verifies -&gt; test_req5
     test_req &lt;- copies - test_entity2</code></pre>
 <h3 id="git-graph">Git Graph<a class="headerlink" href="#git-graph" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/gitgraph.md">Documentation</a></p>
 <pre class="mermaid"><code>gitGraph:
     commit "Ashish"
     branch newbranch
@@ -885,6 +901,7 @@ annotated.</p>
     branch b2
     commit</code></pre>
 <h3 id="c4-diagram">C4 Diagram<a class="headerlink" href="#c4-diagram" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/c4c.md">Documentation</a></p>
 <pre class="mermaid"><code>C4Container
     title Container diagram for Internet Banking System
 
@@ -929,7 +946,7 @@ annotated.</p>
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-06-08T15:08:28+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-06-08</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-06-08T15:48:56+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-06-08</span>
       
         <br>
         Created:
@@ -940,6 +957,8 @@ annotated.</p>
 </div>
 
 
+
+  
 
 
 
