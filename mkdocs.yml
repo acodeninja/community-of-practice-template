@@ -1,5 +1,6 @@
 site_name: Communities of Practice
 repo_url: https://github.com/acodeninja/community-of-practice-template
+repo_name: acodeninja/community-of-practice-template
 edit_uri: edit/main/docs/
 
 theme:
