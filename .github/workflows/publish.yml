@@ -12,7 +12,7 @@ jobs:
 
       - name: Build 🔧
         run: |
-          git worktree add -B gh-pages site origin/gh-pages
+          git worktree add site origin/gh-pages
           make build
 
       - name: Deploy 🚀
