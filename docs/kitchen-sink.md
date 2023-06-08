@@ -20,6 +20,18 @@ If an abbreviation is missing, just add it to the `snippets/abbreviations.md` fi
 
     The abbreviations will only render when you run `make build`, they do not show with `make dev`.
 
+
+## Keyboard Shortcuts
+
+You can include keyboard shortcuts in your documentation using the following formatting.
+
+> To copy, press ++ctrl+c++ or ++cmd+c++
+
+```
+To copy, press ++ctrl+c++ or ++cmd+c++
+```
+
+
 ## Diagrams
 
 Diagramming uses the [mermaid](https://mermaid.js.org/intro/) library. This template uses version 9.4.3.
