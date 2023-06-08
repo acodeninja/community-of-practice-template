@@ -1,3 +1,0 @@
-## Why are diagrams important?
-
-
