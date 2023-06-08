@@ -6,7 +6,7 @@ This template comes with a lot of built-in abbreviations. To use them just type 
 annotated.
 
 * WCAG
-* WIFI
+* NaN
 * W3C
 
 !!! warning "Only in production!"
