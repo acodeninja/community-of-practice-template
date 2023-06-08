@@ -5,6 +5,9 @@ markdown_extensions:
   - pymdownx.details
   - attr_list
   - abbr
+  - toc:
+      permalink: true
+      title: On this page
   - pymdownx.snippets:
       auto_append:
         - snippets/abbreviations.md
