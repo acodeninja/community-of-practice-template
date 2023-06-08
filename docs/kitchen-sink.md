@@ -9,13 +9,20 @@ annotated.
 * NaN
 * W3C
 
+If an abbreviation is missing, just add it to the `snippets/abbreviations.md` file.
+
 !!! warning "Only in production!"
 
     The abbreviations will only render when you run `make build`, they do not show with `make dev`.
 
 ## Diagrams
 
+Diagramming uses the [mermaid](https://mermaid.js.org/intro/) library. This template uses version 9.4.3.
+
+
 ### Flowchart
+
+[Documentation](https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/flowchart.md)
 
 ```mermaid
 flowchart LR
@@ -26,6 +33,8 @@ flowchart LR
 ```
 
 ### Sequence Diagram
+
+[Documentation](https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/sequenceDiagram.md)
 
 ```mermaid
 sequenceDiagram
@@ -39,6 +48,8 @@ sequenceDiagram
 ```
 
 ### Class Diagram
+
+[Documentation](https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/classDiagram.md)
 
 ```mermaid
 classDiagram
@@ -68,6 +79,8 @@ classDiagram
 
 ### State Diagram
 
+[Documentation](https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/stateDiagram.md)
+
 ```mermaid
 stateDiagram
     direction LR
@@ -82,6 +95,8 @@ stateDiagram
 ```
 
 ### Entity Relationship
+
+[Documentation](https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/entityRelationshipDiagram.md)
 
 ```mermaid
 erDiagram
@@ -105,6 +120,8 @@ erDiagram
 
 ### User Journey
 
+[Documentation](https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/userJourney.md)
+
 ```mermaid
 journey
     title My working day
@@ -118,6 +135,8 @@ journey
 ```
 
 ### Gantt
+
+[Documentation](https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/gantt.md)
 
 ```mermaid
 gantt
@@ -154,6 +173,8 @@ gantt
 
 ### Pie Chart
 
+[Documentation](https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/pie.md)
+
 ```mermaid
 pie showData
     title Key elements in Product X
@@ -164,6 +185,8 @@ pie showData
 ```
 
 ### Requirement
+
+[Documentation](https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/requirementDiagram.md)
 
 ```mermaid
 requirementDiagram
@@ -237,6 +260,8 @@ requirementDiagram
 
 ### Git Graph
 
+[Documentation](https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/gitgraph.md)
+
 ```mermaid
 gitGraph:
     commit "Ashish"
@@ -254,6 +279,8 @@ gitGraph:
 ```
 
 ### C4 Diagram
+
+[Documentation](https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/c4c.md)
 
 ```mermaid
 C4Container
