@@ -9,6 +9,11 @@ theme:
   logo: assets/images/logo.svg
   features:
     - content.action.edit
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.expand
 
 plugins:
   - search:
