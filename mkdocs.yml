@@ -11,6 +11,8 @@ theme:
     - content.action.edit
 
 plugins:
+  - search:
+      lang: en
   - git-revision-date-localized:
       enabled: true
       enable_creation_date: true
