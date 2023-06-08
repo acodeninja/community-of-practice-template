@@ -12,7 +12,7 @@ help:
 
 .PHONY: build ## Build the static site
 build: install
-	@docker run --rm -v "$(shell pwd):/content" --env "CI=true" cps/documentation-builder build
+	@docker run --rm -v "$(shell pwd):/content" --env "CI=true" --env GOOGLE_ANALYTICS_TAG cps/documentation-builder build
 
 .PHONY: dev ## Run a local developer server
 dev: install
