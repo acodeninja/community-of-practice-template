@@ -10,7 +10,7 @@ theme:
 plugins:
   - kroki
   - git-revision-date-localized:
-      enabled: !ENV [CI, false]
+      enabled: true
       enable_creation_date: true
       type: timeago
 
