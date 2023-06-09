@@ -7,6 +7,10 @@ markdown_extensions:
   - abbr
   - pymdownx.keys
   - def_list
+  - tables
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
   - toc:
       permalink: true
       title: On this page

@@ -50,6 +50,29 @@ ut eros sed sapien ullamcorper consequat. Nunc ligula ante.
     Nam vulputate tincidunt fringilla.
     Nullam dignissim ultrices urna non auctor.
 
+## Tables
+
+Normal Markdown tables, nothing new here.
+
+| Method   | Description                          |
+|:---------|:-------------------------------------|
+| `GET`    | :material-check:     Fetch resource  |
+| `PUT`    | :material-check-all: Update resource |
+| `DELETE` | :material-close:     Delete resource |
+
+
+## Icons and Emojis
+
+To include icons and emoji, use the same syntax you would on slack. 
+
+For example, `:material-account-child-outline:` produces :material-account-child-outline:.
+
+### Available Libraries
+
+* [Material Design Icons](https://pictogrammers.com/library/mdi/) (prefix with `:material-`)
+* [Font Awesome Icons](https://fontawesome.com/search?o=r&m=free) (prefix with `:fontawesome-`)
+* [Octicons](https://primer.style/design/foundations/icons) (prefix with `:octicons-`)
+
 ## Diagrams
 
 Diagramming uses the [mermaid](https://mermaid.js.org/intro/) library. This template uses version 9.4.3.
