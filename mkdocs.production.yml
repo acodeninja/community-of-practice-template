@@ -8,6 +8,8 @@ markdown_extensions:
   - pymdownx.keys
   - def_list
   - tables
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg

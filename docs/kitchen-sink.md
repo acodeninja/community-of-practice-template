@@ -61,6 +61,33 @@ Normal Markdown tables, nothing new here.
 | `DELETE` | :material-close:     Delete resource |
 
 
+## Math and Latex
+
+You can use the [MathJax](https://www.mathjax.org/) library to display both inline and centred equations, or formatted
+text.
+
+### Inline
+
+```
+Albert Einstein’s famous energy-mass equation, $E = mc^ 2$ is one of the greatest marvels of this universe.
+```
+
+Albert Einstein’s famous energy-mass equation, $E = mc^ 2$ is one of the greatest marvels of this universe.
+
+### Centred
+
+```
+Albert Einstein’s famous energy-mass equation, is one of the greatest marvels of this universe.
+
+$$
+E = mc^ 2
+$$
+```
+
+Albert Einstein’s famous energy-mass equation, is one of the greatest marvels of this universe.
+
+$$E = mc^ 2$$
+
 ## Icons and Emojis
 
 To include icons and emoji, use the same syntax you would on slack. 
