@@ -11,7 +11,7 @@
     z-index: 100;
     left: 0;
     top: 0;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background-color: rgb(255, 255, 255);
     background-color: rgba(255, 255, 255, 0.8);
@@ -28,10 +28,12 @@
 }
 
 .mermaid-zoom-modal svg {
-    margin: 0 auto;
     display: block;
     cursor: zoom-in;
     background-color: rgb(255, 255, 255);
+    width: 100vw;
+    height: 100vh;
+    max-width: none !important;
 }
 
 .mermaid-zoom-modal:first-child {

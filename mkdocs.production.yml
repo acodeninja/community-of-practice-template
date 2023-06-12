@@ -1,12 +1,12 @@
 INHERIT: mkdocs.yml
 
 markdown_extensions:
-  - admonition
-  - pymdownx.details
-  - attr_list
   - abbr
-  - pymdownx.keys
+  - admonition
+  - attr_list
   - def_list
+  - pymdownx.details
+  - pymdownx.keys
   - tables
   - pymdownx.arithmatex:
       generic: true
@@ -19,8 +19,3 @@ markdown_extensions:
   - pymdownx.snippets:
       auto_append:
         - snippets/abbreviations.md
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format

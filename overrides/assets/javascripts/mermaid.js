@@ -1,28 +1,24 @@
 document$.subscribe(function () {
-    loadScripts()
+    waitForMermaidScript()
         .then(renderDiagrams)
         .then(injectDiagrams);
 });
 
-function loadScripts() {
-    var mermaidScript = document.createElement('script');
-    mermaidScript.setAttribute('src', 'https://cdn.jsdelivr.net/npm/mermaid@10.2.3/dist/mermaid.min.js');
-    document.body.appendChild(mermaidScript);
+function waitForMermaidScript() {
+    function scriptLoaded (resolve) {
+        if (window.mermaid !== undefined) return resolve();
+        setTimeout(waitForMermaidScript.bind(this, resolve), 100);
+    }
 
-    return new Promise(waitForMermaidScript);
-}
-
-function waitForMermaidScript(resolve) {
-    if (window.mermaid !== undefined) return resolve();
-    setTimeout(waitForMermaidScript.bind(this, resolve), 100);
+    return new Promise(scriptLoaded);
 }
 
 function renderDiagrams() {
-    var mermaidElements = document.getElementsByClassName('mermaid-diagram');
+    var mermaidElements = document.getElementsByClassName('language-mermaid');
     var diagrams = new Array(mermaidElements.length)
         .fill(true)
         .map(function (_, index) {
-            var root = mermaidElements.item(index);
+            var root = mermaidElements.item(index).parentNode;
             return {index, root, content: root.firstElementChild.innerText};
         });
 
