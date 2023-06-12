@@ -23,8 +23,12 @@ plugins:
       enable_creation_date: true
       type: timeago
 
+extra_css:
+  - assets/stylesheets/mermaid.css
+
 extra_javascript:
-  - javascripts/mathjax.js
+  - assets/javascripts/mathjax.js
+  - assets/javascripts/mermaid.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
@@ -47,8 +51,7 @@ markdown_extensions:
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+          class: mermaid-diagram
 
 copyright: >
   Copyleft 🄯 2023 –
