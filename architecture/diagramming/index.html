@@ -724,34 +724,35 @@ in favour of much simpler "boxes and lines" diagrams. Abandoning these modelling
 the race for agility, many software development teams have lost the ability to communicate visually.</p>
 <h1 id="different-diagrams-for-different-audiences">Different Diagrams for Different Audiences<a class="headerlink" href="#different-diagrams-for-different-audiences" title="Permanent link">&para;</a></h1>
 <h2 id="system-context-diagram">System Context Diagram<a class="headerlink" href="#system-context-diagram" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>C4Context
-    Person(customer, "Customer", "A customer of &lt;br /&gt;Widgets Limited.")
+<pre><code class="language-mermaid">C4Context
+    Person(customer, &quot;Customer&quot;, &quot;A customer of &lt;br /&gt;Widgets Limited.&quot;)
 
-    Enterprise_Boundary(c0, "Widgets Limited") {
-        Person(csa, "Customer Service Agent", "Deals with customer enquiries.")
-        System(ecommerce, "E-commerce System", "Allows customers to buy widgets&lt;br /&gt;online via the widgets.com website.")
-        System(fulfillment, "Fulfillment System", "Responsible for processing and &lt;br /&gt;shipping of customer orders.")
+    Enterprise_Boundary(c0, &quot;Widgets Limited&quot;) {
+        Person(csa, &quot;Customer Service Agent&quot;, &quot;Deals with customer enquiries.&quot;)
+        System(ecommerce, &quot;E-commerce System&quot;, &quot;Allows customers to buy widgets&lt;br /&gt;online via the widgets.com website.&quot;)
+        System(fulfillment, &quot;Fulfillment System&quot;, &quot;Responsible for processing and &lt;br /&gt;shipping of customer orders.&quot;)
     }
 
-    System_Ext(taxamo, "Taxamo", "Calculates local tax &lt;br /&gt;(for EU B2B customers) and acts as &lt;br /&gt;a front-end for Braintree Payments.")
+    System_Ext(taxamo, &quot;Taxamo&quot;, &quot;Calculates local tax &lt;br /&gt;(for EU B2B customers) and acts as &lt;br /&gt;a front-end for Braintree Payments.&quot;)
 
-    System_Ext(braintree, "Braintree Payments", "Processes credit card payments on &lt;br /&gt;behalf of Widgets Limited.")
+    System_Ext(braintree, &quot;Braintree Payments&quot;, &quot;Processes credit card payments on &lt;br /&gt;behalf of Widgets Limited.&quot;)
 
-    System_Ext(post, "Jersey Post", "Calculates worldwide &lt;br /&gt;shipping costs for packages.")
+    System_Ext(post, &quot;Jersey Post&quot;, &quot;Calculates worldwide &lt;br /&gt;shipping costs for packages.&quot;)
 
-    Rel_R(customer, csa, "Asks questions to", "Telephone")
+    Rel_R(customer, csa, &quot;Asks questions to&quot;, &quot;Telephone&quot;)
 
-    Rel_R(customer, ecommerce, "Places orders for widgets using")
+    Rel_R(customer, ecommerce, &quot;Places orders for widgets using&quot;)
 
-    Rel(csa, ecommerce, "Looks up order information using")
+    Rel(csa, ecommerce, &quot;Looks up order information using&quot;)
 
-    Rel_R(ecommerce, fulfillment, "Sends order information to")
+    Rel_R(ecommerce, fulfillment, &quot;Sends order information to&quot;)
 
-    Rel_D(fulfillment, post, "Gets shipping charges from")
+    Rel_D(fulfillment, post, &quot;Gets shipping charges from&quot;)
 
-    Rel_D(ecommerce, taxamo, "Delegates credit card processing to")
+    Rel_D(ecommerce, taxamo, &quot;Delegates credit card processing to&quot;)
 
-    Rel_L(taxamo, braintree, "Uses for credit card processing")</code></pre>
+    Rel_L(taxamo, braintree, &quot;Uses for credit card processing&quot;)
+</code></pre>
 <div class="admonition info">
 <p class="admonition-title">System Context Diagram Details</p>
 <p><strong>Scope</strong>: A single software system.</p>
@@ -959,6 +960,8 @@ development team.</p>
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@10.2.3/dist/mermaid.min.js"></script>
       
     
   </body>
