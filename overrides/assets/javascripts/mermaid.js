@@ -129,7 +129,3 @@ function injectDiagrams(diagrams) {
         }
     });
 }
-
-function enablePanZoom(diagram) {
-
-}
