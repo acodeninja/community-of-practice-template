@@ -4,13 +4,30 @@ title: Diagramming
 
 # Why diagram?
 
-During developing a software solution engineers must communicate
+During developing a software solution engineers must communicate the place of a system within a wider portfolio, the
+context of the system, and the components that make up that system. While written communication is widely used, it can 
+lead to differing mental models of a software system.
 
-## Diagram at different levels of detail     
+This is where effective diagramming comes in, presenting abstracted contextual views of the software system. These views 
+will enable technical and non-technical participants to have a shared vision of the system and aid in discussing issues
+that present themselves during development.
+
+For more information on C4 diagramming see [the C4 website](https://c4model.com/).
 
 ## Core Diagrams
- 
+
+The core diagrams describe the system in abstract terms and focus on the context, containers and components of the
+system. C4 modelling includes more diagram types, but some place an additional maintenance burden on developers that
+is not outweighed by the information conveyed.
+
 ### Context Diagram
+
+The context diagram shows the high level parts of the system, users that interact with them, and the external or 
+third-party systems integrated with the system.
+
+Detail isn't important here as this is your zoomed out view showing a big picture of the system landscape. The focus 
+should be on people (actors, roles, personas, etc) and software systems rather than technologies, protocols and other 
+low-level details. It's the sort of diagram that you could show to non-technical people.
 
 ```diagram-plantuml
 @startuml
@@ -73,6 +90,14 @@ Source: [Hackney Social Care Context Diagram](https://lbhackney-it.github.io/soc
  
 ### Container Diagram
 
+Zooming in by one level, the container diagram (nothing to do with docker containers) splits out each application within
+the system by its constituent containers. Containers can be APIs, frontend applications, and databases, amongst other 
+things.
+
+The Container diagram shows the high-level shape of the software architecture and how responsibilities are distributed 
+across it. It also shows the major technology choices and how the containers communicate with one another. It's a 
+simple, high-level technology focussed diagram that is useful for software developers and support/operations staff 
+alike.
 
 ```diagram-plantuml
 @startuml
@@ -163,6 +188,9 @@ Source: [Hackney Social Care Container Diagram](https://lbhackney-it.github.io/s
 
 ### Component Diagram
 
+The Component diagram shows how a container is made up of a number of "components", what each of those components are, 
+their responsibilities and the technology/implementation details.
+
 ```diagram-plantuml
 @startuml
 !include <C4/C4_Component>
@@ -215,6 +243,9 @@ Source: [C4 Model Sample Component Diagram](https://github.com/plantuml-stdlib/C
 ## Additional Diagrams
 
 ### System Landscape Diagram
+
+The system landscape can be useful in contextualising an entire ecosystem. From a practical perspective, a system 
+landscape diagram is really just a system context diagram without a specific focus on a particular software system.
 
 ```diagram-plantuml
 @startuml
@@ -286,6 +317,11 @@ Source: [Hackney Social Care System Landscape Diagram](https://lbhackney-it.gith
 
 
 ### Deployment Diagram
+
+A deployment diagram allows you to illustrate how instances of software systems and/or containers in the static model 
+are deployed on to the infrastructure within a given deployment environment.
+
+These diagrams are useful when discussing concerns around infrastructure and security with external teams.
 
 ```diagram-plantuml
 @startuml
