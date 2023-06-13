@@ -446,13 +446,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#diagram-at-different-levels-of-detail" class="md-nav__link">
-    Diagram at different levels of detail
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#core-diagrams" class="md-nav__link">
     Core Diagrams
   </a>
@@ -761,13 +754,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#diagram-at-different-levels-of-detail" class="md-nav__link">
-    Diagram at different levels of detail
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#core-diagrams" class="md-nav__link">
     Core Diagrams
   </a>
@@ -852,10 +838,23 @@
 
 
 <h1 id="why-diagram">Why diagram?<a class="headerlink" href="#why-diagram" title="Permanent link">&para;</a></h1>
-<p>During developing a software solution engineers must communicate</p>
-<h2 id="diagram-at-different-levels-of-detail">Diagram at different levels of detail<a class="headerlink" href="#diagram-at-different-levels-of-detail" title="Permanent link">&para;</a></h2>
+<p>During developing a software solution engineers must communicate the place of a system within a wider portfolio, the
+context of the system, and the components that make up that system. While written communication is widely used, it can 
+lead to differing mental models of a software system.</p>
+<p>This is where effective diagramming comes in, presenting abstracted contextual views of the software system. These views 
+will enable technical and non-technical participants to have a shared vision of the system and aid in discussing issues
+that present themselves during development.</p>
+<p>For more information on C4 diagramming see <a href="https://c4model.com/">the C4 website</a>.</p>
 <h2 id="core-diagrams">Core Diagrams<a class="headerlink" href="#core-diagrams" title="Permanent link">&para;</a></h2>
+<p>The core diagrams describe the system in abstract terms and focus on the context, containers and components of the
+system. C4 modelling includes more diagram types, but some place an additional maintenance burden on developers that
+is not outweighed by the information conveyed.</p>
 <h3 id="context-diagram">Context Diagram<a class="headerlink" href="#context-diagram" title="Permanent link">&para;</a></h3>
+<p>The context diagram shows the high level parts of the system, users that interact with them, and the external or 
+third-party systems integrated with the system.</p>
+<p>Detail isn't important here as this is your zoomed out view showing a big picture of the system landscape. The focus 
+should be on people (actors, roles, personas, etc) and software systems rather than technologies, protocols and other 
+low-level details. It's the sort of diagram that you could show to non-technical people.</p>
 <pre class="diagram-plantuml"><code>@startuml
 'ref http://plantuml.com/stdlib
 !include &lt;C4/C4_Context&gt;
@@ -908,6 +907,13 @@ development team.</p>
 <p><strong>Recommended for most teams</strong>: Yes.</p>
 </div>
 <h3 id="container-diagram">Container Diagram<a class="headerlink" href="#container-diagram" title="Permanent link">&para;</a></h3>
+<p>Zooming in by one level, the container diagram (nothing to do with docker containers) splits out each application within
+the system by its constituent containers. Containers can be APIs, frontend applications, and databases, amongst other 
+things.</p>
+<p>The Container diagram shows the high-level shape of the software architecture and how responsibilities are distributed 
+across it. It also shows the major technology choices and how the containers communicate with one another. It's a 
+simple, high-level technology focussed diagram that is useful for software developers and support/operations staff 
+alike.</p>
 <pre class="diagram-plantuml"><code>@startuml
 !include &lt;C4/C4_Container&gt;
 
@@ -986,6 +992,8 @@ will likely vary across different environments (e.g. production, staging, develo
 better captured via one or more deployment diagrams.</p>
 </div>
 <h3 id="component-diagram">Component Diagram<a class="headerlink" href="#component-diagram" title="Permanent link">&para;</a></h3>
+<p>The Component diagram shows how a container is made up of a number of "components", what each of those components are, 
+their responsibilities and the technology/implementation details.</p>
 <pre class="diagram-plantuml"><code>@startuml
 !include &lt;C4/C4_Component&gt;
 
@@ -1029,6 +1037,8 @@ automating their creation for long-lived documentation.</p>
 </div>
 <h2 id="additional-diagrams">Additional Diagrams<a class="headerlink" href="#additional-diagrams" title="Permanent link">&para;</a></h2>
 <h3 id="system-landscape-diagram">System Landscape Diagram<a class="headerlink" href="#system-landscape-diagram" title="Permanent link">&para;</a></h3>
+<p>The system landscape can be useful in contextualising an entire ecosystem. From a practical perspective, a system 
+landscape diagram is really just a system context diagram without a specific focus on a particular software system.</p>
 <pre class="diagram-plantuml"><code>@startuml
 'ref http://plantuml.com/stdlib
 !include &lt;C4/C4_Context&gt;
@@ -1091,6 +1101,9 @@ SHOW_DYNAMIC_LEGEND()
 <p><strong>Recommended for most teams</strong>: Yes.</p>
 </div>
 <h3 id="deployment-diagram">Deployment Diagram<a class="headerlink" href="#deployment-diagram" title="Permanent link">&para;</a></h3>
+<p>A deployment diagram allows you to illustrate how instances of software systems and/or containers in the static model 
+are deployed on to the infrastructure within a given deployment environment.</p>
+<p>These diagrams are useful when discussing concerns around infrastructure and security with external teams.</p>
 <pre class="diagram-plantuml"><code>@startuml
 !include &lt;C4/C4_Deployment&gt;
 
@@ -1260,7 +1273,7 @@ software architects, developers, infrastructure architects, and operations/suppo
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-06-13T11:40:38+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-06-13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-06-13T12:35:05+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-06-13</span>
       
         <br>
         Created:
