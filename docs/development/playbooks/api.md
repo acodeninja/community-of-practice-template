@@ -11,9 +11,11 @@ This API playbook will help readers understand:
 * How we support and maintain our APIs
 * Best practices that we have adopted as standard in our development of APIs
 
-## Naming Conventions
+## Conventions
 
-#### Paths
+### Naming Conventions
+
+##### Paths
 
 **MUST** use lowercase separate words with hyphens for url path segments.
 
@@ -33,7 +35,7 @@ trailing slash or not.
 /posts/ === /posts
 ```
 
-#### Query Parameters
+##### Query Parameters
 
 **MUST** use snake_case for Query Parameters.
 
@@ -61,7 +63,7 @@ conventions:
 
 * `limit` - client suggested limit to restrict the number of entries on a page.
 
-#### Resource Names
+##### Resource Names
 
 **MUST** pluralise resource names.
 
