@@ -77,7 +77,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#naming-conventions" class="md-skip">
+        <a href="#conventions" class="md-skip">
           Skip to content
         </a>
       
@@ -638,6 +638,14 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#conventions" class="md-nav__link">
+    Conventions
+  </a>
+  
+    <nav class="md-nav" aria-label="Conventions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#naming-conventions" class="md-nav__link">
     Naming Conventions
   </a>
@@ -663,6 +671,11 @@
   <a href="#resource-names" class="md-nav__link">
     Resource Names
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -771,6 +784,14 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#conventions" class="md-nav__link">
+    Conventions
+  </a>
+  
+    <nav class="md-nav" aria-label="Conventions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#naming-conventions" class="md-nav__link">
     Naming Conventions
   </a>
@@ -796,6 +817,11 @@
   <a href="#resource-names" class="md-nav__link">
     Resource Names
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -829,16 +855,17 @@
 
   <h1>API Playbook</h1>
 
-<p>APIs are an essential part of modern software development, and when correctly managed, APIs can reduce time to 
+<p><abbr title="Application Programming Interfaces">APIs</abbr> are an essential part of modern software development, and when correctly managed, <abbr title="Application Programming Interfaces">APIs</abbr> can reduce time to 
 production for digital transformation projects.</p>
 <p>This <abbr title="Application Programming Interface">API</abbr> playbook will help readers understand:</p>
 <ul>
-<li>How we go about building our APIs</li>
-<li>How we support and maintain our APIs</li>
-<li>Best practices that we have adopted as standard in our development of APIs</li>
+<li>How we go about building our <abbr title="Application Programming Interfaces">APIs</abbr></li>
+<li>How we support and maintain our <abbr title="Application Programming Interfaces">APIs</abbr></li>
+<li>Best practices that we have adopted as standard in our development of <abbr title="Application Programming Interfaces">APIs</abbr></li>
 </ul>
-<h2 id="naming-conventions">Naming Conventions<a class="headerlink" href="#naming-conventions" title="Permanent link">&para;</a></h2>
-<h4 id="paths">Paths<a class="headerlink" href="#paths" title="Permanent link">&para;</a></h4>
+<h2 id="conventions">Conventions<a class="headerlink" href="#conventions" title="Permanent link">&para;</a></h2>
+<h3 id="naming-conventions">Naming Conventions<a class="headerlink" href="#naming-conventions" title="Permanent link">&para;</a></h3>
+<h5 id="paths">Paths<a class="headerlink" href="#paths" title="Permanent link">&para;</a></h5>
 <p><strong>MUST</strong> use lowercase separate words with hyphens for url path segments.</p>
 <div class="highlight"><pre><span></span><code>/shipment-orders/{shipment-order-id}
 </code></pre></div>
@@ -849,7 +876,7 @@ ok as a path parameter.</p>
 trailing slash or not.</p>
 <div class="highlight"><pre><span></span><code>/posts/ === /posts
 </code></pre></div>
-<h4 id="query-parameters">Query Parameters<a class="headerlink" href="#query-parameters" title="Permanent link">&para;</a></h4>
+<h5 id="query-parameters">Query Parameters<a class="headerlink" href="#query-parameters" title="Permanent link">&para;</a></h5>
 <p><strong>MUST</strong> use snake_case for Query Parameters.</p>
 <div class="highlight"><pre><span></span><code>customer_number, order_id, billing_address
 </code></pre></div>
@@ -879,7 +906,7 @@ conventions:</p>
 <p><code>limit</code> - client suggested limit to restrict the number of entries on a page.</p>
 </li>
 </ul>
-<h4 id="resource-names">Resource Names<a class="headerlink" href="#resource-names" title="Permanent link">&para;</a></h4>
+<h5 id="resource-names">Resource Names<a class="headerlink" href="#resource-names" title="Permanent link">&para;</a></h5>
 <p><strong>MUST</strong> pluralise resource names.</p>
 <div class="highlight"><pre><span></span><code>/posts
 /posts/{post-id}
@@ -899,7 +926,7 @@ a collection with cardinality 1. </p>
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-06-13T14:56:13+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-06-13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-06-13T15:04:04+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-06-13</span>
       
         <br>
         Created:
