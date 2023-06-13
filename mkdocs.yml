@@ -24,14 +24,14 @@ plugins:
       type: timeago
 
 extra_css:
-  - assets/stylesheets/mermaid.css
+  - assets/stylesheets/diagrams.css
 
 extra_javascript:
   - assets/javascripts/mathjax.js
-  - assets/javascripts/mermaid.js
+  - assets/javascripts/diagrams.js
+  - assets/javascripts/deflate.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  - https://cdn.jsdelivr.net/npm/mermaid@10.2.3/dist/mermaid.min.js
 
 markdown_extensions:
   - abbr
@@ -46,6 +46,13 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.superfences:
+      custom_fences:
+        - name: diagram-plantuml
+          class: diagram-plantuml
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - toc:
       permalink: true
       title: On this page

@@ -16,6 +16,13 @@ markdown_extensions:
   - pymdownx.snippets:
       auto_append:
         - snippets/abbreviations.md
+  - pymdownx.superfences:
+      custom_fences:
+        - name: diagram-plantuml
+          class: diagram-plantuml
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - toc:
       permalink: true
       title: On this page

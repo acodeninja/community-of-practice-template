@@ -94,16 +94,39 @@ To include icons and emoji, use the same syntax you would on slack.
 
 For example, `:material-account-child-outline:` produces :material-account-child-outline:.
 
-### Available Libraries
+### Available Libraries 
 
 * [Material Design Icons](https://pictogrammers.com/library/mdi/) (prefix with `:material-`)
 * [Font Awesome Icons](https://fontawesome.com/search?o=r&m=free) (prefix with `:fontawesome-`)
 * [Octicons](https://primer.style/design/foundations/icons) (prefix with `:octicons-`)
 
-## Diagrams
+## PlantUML Diagrams
 
-Diagramming uses the [mermaid](https://mermaid.js.org/intro/) library. This template uses version 9.4.3.
+PlantUML diagrams use the PlantUML web service to render diagrams. They support click to zoom, allowing more complex 
+diagrams. Take a look at [Architecture->Diagramming](architecture/diagramming.md) for a more thorough explainer on how
+to use PlantUML diagrams for technical documentation.
 
+```diagram-plantuml
+@startuml
+!include <C4/C4_Container>
+
+Person(personAlias, "Label", "Optional Description")
+Container(containerAlias, "Label", "Technology", "Optional Description")
+System(systemAlias, "Label", "Optional Description")
+
+System_Ext(extSystemAlias, "Label", "Optional Description")
+
+Rel(personAlias, containerAlias, "Label", "Optional Technology")
+
+Rel_U(systemAlias, extSystemAlias, "Label", "Optional Technology")
+@enduml
+```
+
+
+## Basic Diagrams
+
+Basic diagramming uses the [mermaid](https://mermaid.js.org/intro/) library. This template uses version 9.4.3 and does 
+not support click to zoom.
 
 ### Flowchart
 
@@ -361,47 +384,4 @@ gitGraph:
     commit
     branch b2
     commit
-```
-
-### C4 Diagram
-
-[Documentation](https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/c4c.md)
-
-```mermaid
-C4Container
-    title Container diagram for Internet Banking System
-
-    System_Ext(email_system, "E-Mail System", "The internal Microsoft Exchange system", $tags="v1.0")
-    Person(customer, Customer, "A customer of the bank, with personal bank accounts", $tags="v1.0")
-
-    Container_Boundary(c1, "Internet Banking") {
-        Container(spa, "Single-Page App", "JavaScript, Angular", "Provides all the Internet banking functionality to cutomers via their web browser")
-        Container_Ext(mobile_app, "Mobile App", "C#, Xamarin", "Provides a limited subset of the Internet banking functionality to customers via their mobile device")
-        Container(web_app, "Web Application", "Java, Spring MVC", "Delivers the static content and the Internet banking SPA")
-        ContainerDb(database, "Database", "SQL Database", "Stores user registration information, hashed auth credentials, access logs, etc.")
-        ContainerDb_Ext(backend_api, "API Application", "Java, Docker Container", "Provides Internet banking functionality via API")
-
-    }
-
-    System_Ext(banking_system, "Mainframe Banking System", "Stores all of the core banking information about customers, accounts, transactions, etc.")
-
-    Rel(customer, web_app, "Uses", "HTTPS")
-    UpdateRelStyle(customer, web_app, $offsetY="60", $offsetX="90")
-    Rel(customer, spa, "Uses", "HTTPS")
-    UpdateRelStyle(customer, spa, $offsetY="-40")
-    Rel(customer, mobile_app, "Uses")
-    UpdateRelStyle(customer, mobile_app, $offsetY="-30")
-
-    Rel(web_app, spa, "Delivers")
-    UpdateRelStyle(web_app, spa, $offsetX="130")
-    Rel(spa, backend_api, "Uses", "async, JSON/HTTPS")
-    Rel(mobile_app, backend_api, "Uses", "async, JSON/HTTPS")
-    Rel_Back(database, backend_api, "Reads from and writes to", "sync, JDBC")
-
-    Rel(email_system, customer, "Sends e-mails to")
-    UpdateRelStyle(email_system, customer, $offsetX="-45")
-    Rel(backend_api, email_system, "Sends e-mails using", "sync, SMTP")
-    UpdateRelStyle(backend_api, email_system, $offsetY="-60")
-    Rel(backend_api, banking_system, "Uses", "sync/async, XML/HTTPS")
-    UpdateRelStyle(backend_api, banking_system, $offsetY="-50", $offsetX="-140")
 ```
