@@ -16,6 +16,7 @@
 *[CSS]: Cascading Style Sheets
 *[SaaS]: Software-as-a-Service
 *[API]: Application Programming Interface
+*[APIs]: Application Programming Interfaces
 *[XML]: Extensible Markup Language
 *[SOAP]: Simple Object Access Protocol
 *[XHTML]: Extensible Hypertext Markup Language
@@ -403,7 +404,6 @@
 *[AoE]: ATA over Ethernet
 *[AOP]: Aspect-Oriented Programming
 *[APCI]: Application-Layer Protocol Control Information
-*[API]: Application Programming Interface
 *[APIC]: Advanced Programmable Interrupt Controller
 *[APIPA]: Automatic Private IP Addressing
 *[APL]: A Programming Language
