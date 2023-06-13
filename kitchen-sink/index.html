@@ -41,7 +41,7 @@
     
       <link rel="stylesheet" href="../css/timeago.css">
     
-      <link rel="stylesheet" href="../assets/stylesheets/mermaid.css">
+      <link rel="stylesheet" href="../assets/stylesheets/diagrams.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -465,11 +465,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#diagrams" class="md-nav__link">
-    Diagrams
+  <a href="#plantuml-diagrams" class="md-nav__link">
+    PlantUML Diagrams
   </a>
   
-    <nav class="md-nav" aria-label="Diagrams">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-diagrams" class="md-nav__link">
+    Basic Diagrams
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Diagrams">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -542,13 +549,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#c4-diagram" class="md-nav__link">
-    C4 Diagram
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -612,46 +612,10 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-        
-      
-      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
-          Diagramming
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_2">
-          <span class="md-nav__icon md-icon"></span>
-          Diagramming
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
     <li class="md-nav__item">
       <a href="../architecture/diagramming/" class="md-nav__link">
         Diagramming
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
     </li>
   
 
@@ -973,11 +937,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#diagrams" class="md-nav__link">
-    Diagrams
+  <a href="#plantuml-diagrams" class="md-nav__link">
+    PlantUML Diagrams
   </a>
   
-    <nav class="md-nav" aria-label="Diagrams">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-diagrams" class="md-nav__link">
+    Basic Diagrams
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Diagrams">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1050,13 +1021,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#c4-diagram" class="md-nav__link">
-    C4 Diagram
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1104,8 +1068,8 @@ annotated.</p>
 <blockquote>
 <p>To copy, press <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> or <span class="keys"><kbd class="key-command">Cmd</kbd><span>+</span><kbd class="key-c">C</kbd></span></p>
 </blockquote>
-<pre><code>To copy, press ++ctrl+c++ or ++cmd+c++
-</code></pre>
+<div class="highlight"><pre><span></span><code>To copy, press ++ctrl+c++ or ++cmd+c++
+</code></pre></div>
 <h2 id="definition-lists">Definition lists<a class="headerlink" href="#definition-lists" title="Permanent link">&para;</a></h2>
 <p>Definition lists or <code>dl</code> tags, are useful anywhere you need a list of key-value pairs.</p>
 <dl>
@@ -1151,16 +1115,16 @@ Nullam dignissim ultrices urna non auctor.</p>
 <p>You can use the <a href="https://www.mathjax.org/">MathJax</a> library to display both inline and centred equations, or formatted
 text.</p>
 <h3 id="inline">Inline<a class="headerlink" href="#inline" title="Permanent link">&para;</a></h3>
-<pre><code>Albert Einstein’s famous energy-mass equation, $E = mc^ 2$ is one of the greatest marvels of this universe.
-</code></pre>
+<div class="highlight"><pre><span></span><code>Albert Einstein’s famous energy-mass equation, $E = mc^ 2$ is one of the greatest marvels of this universe.
+</code></pre></div>
 <p>Albert Einstein’s famous energy-mass equation, <span class="arithmatex">\(E = mc^ 2\)</span> is one of the greatest marvels of this universe.</p>
 <h3 id="centred">Centred<a class="headerlink" href="#centred" title="Permanent link">&para;</a></h3>
-<pre><code>Albert Einstein’s famous energy-mass equation, is one of the greatest marvels of this universe.
+<div class="highlight"><pre><span></span><code>Albert Einstein’s famous energy-mass equation, is one of the greatest marvels of this universe.
 
 $$
 E = mc^ 2
 $$
-</code></pre>
+</code></pre></div>
 <p>Albert Einstein’s famous energy-mass equation, is one of the greatest marvels of this universe.</p>
 <div class="arithmatex">\[E = mc^ 2\]</div>
 <h2 id="icons-and-emojis">Icons and Emojis<a class="headerlink" href="#icons-and-emojis" title="Permanent link">&para;</a></h2>
@@ -1172,33 +1136,49 @@ $$
 <li><a href="https://fontawesome.com/search?o=r&amp;m=free">Font Awesome Icons</a> (prefix with <code>:fontawesome-</code>)</li>
 <li><a href="https://primer.style/design/foundations/icons">Octicons</a> (prefix with <code>:octicons-</code>)</li>
 </ul>
-<h2 id="diagrams">Diagrams<a class="headerlink" href="#diagrams" title="Permanent link">&para;</a></h2>
-<p>Diagramming uses the <a href="https://mermaid.js.org/intro/">mermaid</a> library. This template uses version 9.4.3.</p>
+<h2 id="plantuml-diagrams">PlantUML Diagrams<a class="headerlink" href="#plantuml-diagrams" title="Permanent link">&para;</a></h2>
+<p>PlantUML diagrams use the PlantUML web service to render diagrams. They support click to zoom, allowing more complex 
+diagrams. Take a look at <a href="../architecture/diagramming/">Architecture-&gt;Diagramming</a> for a more thorough explainer on how
+to use PlantUML diagrams for technical documentation.</p>
+<pre class="diagram-plantuml"><code>@startuml
+!include &lt;C4/C4_Container&gt;
+
+Person(personAlias, "Label", "Optional Description")
+Container(containerAlias, "Label", "Technology", "Optional Description")
+System(systemAlias, "Label", "Optional Description")
+
+System_Ext(extSystemAlias, "Label", "Optional Description")
+
+Rel(personAlias, containerAlias, "Label", "Optional Technology")
+
+Rel_U(systemAlias, extSystemAlias, "Label", "Optional Technology")
+@enduml</code></pre>
+<h2 id="basic-diagrams">Basic Diagrams<a class="headerlink" href="#basic-diagrams" title="Permanent link">&para;</a></h2>
+<p>Basic diagramming uses the <a href="https://mermaid.js.org/intro/">mermaid</a> library. This template uses version 9.4.3 and does 
+not support click to zoom.</p>
 <h3 id="flowchart">Flowchart<a class="headerlink" href="#flowchart" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/flowchart.md">Documentation</a></p>
-<pre><code class="language-mermaid">flowchart LR
+<pre class="mermaid"><code>flowchart LR
     A[Hard edge] --&gt;|Link text| B(Round edge)
     B --&gt; C{Decision}
     C --&gt;|One| D[Result one]
-    C --&gt;|Two| E[Result two]
-</code></pre>
+    C --&gt;|Two| E[Result two]</code></pre>
 <h3 id="sequence-diagram">Sequence Diagram<a class="headerlink" href="#sequence-diagram" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/sequenceDiagram.md">Documentation</a></p>
-<pre><code class="language-mermaid">sequenceDiagram
+<pre class="mermaid"><code>sequenceDiagram
     par Alice to Bob
         Alice-&gt;&gt;Bob: Hello guys!
     and Alice to John
         Alice-&gt;&gt;John: Hello guys!
     end
     Bob--&gt;&gt;Alice: Hi Alice!
-    John--&gt;&gt;Alice: Hi Alice!
-</code></pre>
+    John--&gt;&gt;Alice: Hi Alice!</code></pre>
 <h3 id="class-diagram">Class Diagram<a class="headerlink" href="#class-diagram" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/classDiagram.md">Documentation</a></p>
-<pre><code class="language-mermaid">classDiagram
-    note &quot;From Duck till Zebra&quot;
+<pre class="mermaid"><code>classDiagram
+    note "From Duck till Zebra"
     Animal &lt;|-- Duck
-    note for Duck &quot;can fly\ncan swim\ncan dive\ncan help in debugging&quot;
+    note for Duck "can fly\ncan swim\ncan dive\ncan help in debugging"
     Animal &lt;|-- Fish
     Animal &lt;|-- Zebra
     Animal : +int age
@@ -1217,11 +1197,10 @@ $$
     class Zebra{
         +bool is_wild
         +run()
-    }
-</code></pre>
+    }</code></pre>
 <h3 id="state-diagram">State Diagram<a class="headerlink" href="#state-diagram" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/stateDiagram.md">Documentation</a></p>
-<pre><code class="language-mermaid">stateDiagram
+<pre class="mermaid"><code>stateDiagram
     direction LR
     [*] --&gt; A
     A --&gt; B
@@ -1230,11 +1209,10 @@ $$
       direction LR
       a --&gt; b
     }
-    B --&gt; D
-</code></pre>
+    B --&gt; D</code></pre>
 <h3 id="entity-relationship">Entity Relationship<a class="headerlink" href="#entity-relationship" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/entityRelationshipDiagram.md">Documentation</a></p>
-<pre><code class="language-mermaid">erDiagram
+<pre class="mermaid"><code>erDiagram
     CUSTOMER ||--o{ ORDER : places
     CUSTOMER {
         string name
@@ -1250,11 +1228,10 @@ $$
         string productCode
         int quantity
         float pricePerUnit
-    }
-</code></pre>
+    }</code></pre>
 <h3 id="user-journey">User Journey<a class="headerlink" href="#user-journey" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/userJourney.md">Documentation</a></p>
-<pre><code class="language-mermaid">journey
+<pre class="mermaid"><code>journey
     title My working day
     section Go to work
       Make tea: 5: Me
@@ -1262,15 +1239,14 @@ $$
       Do work: 1: Me, Cat
     section Go home
       Go downstairs: 5: Me
-      Sit down: 5: Me
-</code></pre>
+      Sit down: 5: Me</code></pre>
 <h3 id="gantt">Gantt<a class="headerlink" href="#gantt" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/gantt.md">Documentation</a></p>
-<pre><code class="language-mermaid">gantt
+<pre class="mermaid"><code>gantt
     dateFormat  YYYY-MM-DD
     title       Adding GANTT diagram functionality to mermaid
     excludes    weekends
-    %% (`excludes` accepts specific dates in YYYY-MM-DD format, days of the week (&quot;sunday&quot;) or &quot;weekends&quot;, but not the word &quot;weekdays&quot;.)
+    %% (`excludes` accepts specific dates in YYYY-MM-DD format, days of the week ("sunday") or "weekends", but not the word "weekdays".)
 
     section A section
     Completed task            :done,    des1, 2014-01-06,2014-01-08
@@ -1295,20 +1271,18 @@ $$
     section Last section
     Describe gantt syntax               :after doc1, 3d
     Add gantt diagram to demo page      :20h
-    Add another diagram to demo page    :48h
-</code></pre>
+    Add another diagram to demo page    :48h</code></pre>
 <h3 id="pie-chart">Pie Chart<a class="headerlink" href="#pie-chart" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/pie.md">Documentation</a></p>
-<pre><code class="language-mermaid">pie showData
+<pre class="mermaid"><code>pie showData
     title Key elements in Product X
-    &quot;Calcium&quot; : 42.96
-    &quot;Potassium&quot; : 50.05
-    &quot;Magnesium&quot; : 10.01
-    &quot;Iron&quot; :  5
-</code></pre>
+    "Calcium" : 42.96
+    "Potassium" : 50.05
+    "Magnesium" : 10.01
+    "Iron" :  5</code></pre>
 <h3 id="requirement">Requirement<a class="headerlink" href="#requirement" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/requirementDiagram.md">Documentation</a></p>
-<pre><code class="language-mermaid">requirementDiagram
+<pre class="mermaid"><code>requirementDiagram
 
     requirement test_req {
     id: 1
@@ -1362,7 +1336,7 @@ $$
     }
 
     element test_entity3 {
-    type: &quot;test suite&quot;
+    type: "test suite"
     docRef: github.com/all_the_tests
     }
 
@@ -1374,63 +1348,22 @@ $$
     test_req4 - derives -&gt; test_req5
     test_req5 - refines -&gt; test_req6
     test_entity3 - verifies -&gt; test_req5
-    test_req &lt;- copies - test_entity2
-</code></pre>
+    test_req &lt;- copies - test_entity2</code></pre>
 <h3 id="git-graph">Git Graph<a class="headerlink" href="#git-graph" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/gitgraph.md">Documentation</a></p>
-<pre><code class="language-mermaid">gitGraph:
-    commit &quot;Ashish&quot;
+<pre class="mermaid"><code>gitGraph:
+    commit "Ashish"
     branch newbranch
     checkout newbranch
-    commit id:&quot;1111&quot;
-    commit tag:&quot;test&quot;
+    commit id:"1111"
+    commit tag:"test"
     checkout main
     commit type: HIGHLIGHT
     commit
     merge newbranch
     commit
     branch b2
-    commit
-</code></pre>
-<h3 id="c4-diagram">C4 Diagram<a class="headerlink" href="#c4-diagram" title="Permanent link">&para;</a></h3>
-<p><a href="https://github.com/mermaid-js/mermaid/blob/v9.4.3/docs/syntax/c4c.md">Documentation</a></p>
-<pre><code class="language-mermaid">C4Container
-    title Container diagram for Internet Banking System
-
-    System_Ext(email_system, &quot;E-Mail System&quot;, &quot;The internal Microsoft Exchange system&quot;, $tags=&quot;v1.0&quot;)
-    Person(customer, Customer, &quot;A customer of the bank, with personal bank accounts&quot;, $tags=&quot;v1.0&quot;)
-
-    Container_Boundary(c1, &quot;Internet Banking&quot;) {
-        Container(spa, &quot;Single-Page App&quot;, &quot;JavaScript, Angular&quot;, &quot;Provides all the Internet banking functionality to cutomers via their web browser&quot;)
-        Container_Ext(mobile_app, &quot;Mobile App&quot;, &quot;C#, Xamarin&quot;, &quot;Provides a limited subset of the Internet banking functionality to customers via their mobile device&quot;)
-        Container(web_app, &quot;Web Application&quot;, &quot;Java, Spring MVC&quot;, &quot;Delivers the static content and the Internet banking SPA&quot;)
-        ContainerDb(database, &quot;Database&quot;, &quot;SQL Database&quot;, &quot;Stores user registration information, hashed auth credentials, access logs, etc.&quot;)
-        ContainerDb_Ext(backend_api, &quot;API Application&quot;, &quot;Java, Docker Container&quot;, &quot;Provides Internet banking functionality via API&quot;)
-
-    }
-
-    System_Ext(banking_system, &quot;Mainframe Banking System&quot;, &quot;Stores all of the core banking information about customers, accounts, transactions, etc.&quot;)
-
-    Rel(customer, web_app, &quot;Uses&quot;, &quot;HTTPS&quot;)
-    UpdateRelStyle(customer, web_app, $offsetY=&quot;60&quot;, $offsetX=&quot;90&quot;)
-    Rel(customer, spa, &quot;Uses&quot;, &quot;HTTPS&quot;)
-    UpdateRelStyle(customer, spa, $offsetY=&quot;-40&quot;)
-    Rel(customer, mobile_app, &quot;Uses&quot;)
-    UpdateRelStyle(customer, mobile_app, $offsetY=&quot;-30&quot;)
-
-    Rel(web_app, spa, &quot;Delivers&quot;)
-    UpdateRelStyle(web_app, spa, $offsetX=&quot;130&quot;)
-    Rel(spa, backend_api, &quot;Uses&quot;, &quot;async, JSON/HTTPS&quot;)
-    Rel(mobile_app, backend_api, &quot;Uses&quot;, &quot;async, JSON/HTTPS&quot;)
-    Rel_Back(database, backend_api, &quot;Reads from and writes to&quot;, &quot;sync, JDBC&quot;)
-
-    Rel(email_system, customer, &quot;Sends e-mails to&quot;)
-    UpdateRelStyle(email_system, customer, $offsetX=&quot;-45&quot;)
-    Rel(backend_api, email_system, &quot;Sends e-mails using&quot;, &quot;sync, SMTP&quot;)
-    UpdateRelStyle(backend_api, email_system, $offsetY=&quot;-60&quot;)
-    Rel(backend_api, banking_system, &quot;Uses&quot;, &quot;sync/async, XML/HTTPS&quot;)
-    UpdateRelStyle(backend_api, banking_system, $offsetY=&quot;-50&quot;, $offsetX=&quot;-140&quot;)
-</code></pre>
+    commit</code></pre>
 <!-- https://geekflare.com/tech-abbreviations/ -->
 <!-- https://en.wikipedia.org/wiki/List_of_computing_and_IT_abbreviations -->
 
@@ -1439,7 +1372,7 @@ $$
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-06-09T08:41:29+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-06-09</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-06-13T11:40:38+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-06-13</span>
       
         <br>
         Created:
@@ -1623,13 +1556,13 @@ $$
       
         <script src="../assets/javascripts/mathjax.js"></script>
       
-        <script src="../assets/javascripts/mermaid.js"></script>
+        <script src="../assets/javascripts/diagrams.js"></script>
+      
+        <script src="../assets/javascripts/deflate.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/mermaid@10.2.3/dist/mermaid.min.js"></script>
       
     
   </body>
