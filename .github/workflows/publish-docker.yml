@@ -7,9 +7,10 @@ on:
     paths:
       - Dockerfile
       - run.sh
+      - .github/workflows/publish-docker.yml
 
 jobs:
-  build-and-deploy:
+  publish-images:
     runs-on: ubuntu-latest
     steps:
       - name: checkout 🛎️
