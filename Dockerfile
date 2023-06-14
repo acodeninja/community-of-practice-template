@@ -8,7 +8,7 @@ RUN git config --global --add safe.directory /content
 WORKDIR /content
 
 FROM base AS backstage
-ENTRYPOINT [ "mkdocs", "--config-file", "mkdocs.backstage.yml" ]
+ENTRYPOINT [ "mkdocs" ]
 
 FROM base AS development
 COPY run.sh /run.sh

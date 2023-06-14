@@ -1,37 +1,4 @@
-site_name: Communities of Practice
-repo_url: https://github.com/acodeninja/community-of-practice-template
-repo_name: acodeninja/community-of-practice-template
-edit_uri: edit/main/docs/
-
-theme:
-  name: material
-  custom_dir: overrides
-  logo: assets/images/logo.svg
-  features:
-    - content.action.edit
-    - navigation.instant
-    - navigation.tracking
-    - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.expand
-
-plugins:
-  - search:
-      lang: en
-  - git-revision-date-localized:
-      enabled: true
-      enable_creation_date: true
-      type: timeago
-
-extra_css:
-  - assets/stylesheets/diagrams.css
-
-extra_javascript:
-  - assets/javascripts/mathjax.js
-  - assets/javascripts/diagrams.js
-  - assets/javascripts/deflate.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+INHERIT: mkdocs.development.yml
 
 markdown_extensions:
   - abbr
@@ -46,6 +13,9 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.snippets:
+      auto_append:
+        - snippets/abbreviations.md
   - pymdownx.superfences:
       custom_fences:
         - name: diagram-plantuml
@@ -56,43 +26,3 @@ markdown_extensions:
   - toc:
       permalink: true
       title: On this page
-
-copyright: >
-  Copyleft 🄯 2023 –
-  <a href="#__consent">Change cookie settings</a>
-
-extra:
-  consent:
-    title: Cookie consent
-    description: >-
-      We use cookies to recognize your repeated visits and preferences, as well
-      as to measure the effectiveness of our documentation and whether users
-      find what they're searching for. With your consent, you're helping us to
-      make our documentation better.
-    actions:
-      - accept
-      - manage
-      - reject
-  analytics:
-    provider: google
-    property: !ENV [GOOGLE_ANALYTICS_TAG, null]
-    consent:
-      title: Cookie consent
-      description: >-
-        We use cookies to recognize your repeated visits and preferences, as well
-        as to measure the effectiveness of our documentation and whether users
-        find what they're searching for. With your consent, you're helping us to
-        make our documentation better.
-    feedback:
-      title: Was this page helpful?
-      ratings:
-        - icon: material/emoticon-happy-outline
-          name: This page was helpful
-          data: 1
-          note: >-
-            Thanks for your feedback!
-        - icon: material/emoticon-sad-outline
-          name: This page could be improved
-          data: 0
-          note: >-
-            Thanks for your feedback!

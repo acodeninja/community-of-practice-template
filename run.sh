@@ -4,7 +4,7 @@ TASK=$1
 
 case $TASK in
 'build')
-  mkdocs build --config-file mkdocs.production.yml
+  mkdocs build --config-file mkdocs.yml
   tidy \
     -indent --indent-spaces 2 --indent-attributes no \
     --wrap-attributes no -wrap 0 \
@@ -12,6 +12,6 @@ case $TASK in
     -m ./**/*.html || echo "Tidied with errors"
   ;;
 'dev')
-  mkdocs serve -a 0.0.0.0:8000
+  mkdocs serve -a 0.0.0.0:8000 --config-file mkdocs.development.yml
   ;;
 esac
