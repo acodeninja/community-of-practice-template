@@ -21,9 +21,10 @@ dev: install
 .PHONY: install ## Build the docker image used to build or serve the docs
 install: .built
 .built:
-	@docker build -t cps/documentation-builder .
+	@docker build --target development -t cps/documentation-builder .
 	@date > .built
 
+.PHONY: clean ## Remove built container
 clean:
 	@rm .built
 	@docker image rm cps/documentation-builder

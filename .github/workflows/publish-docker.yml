@@ -1,0 +1,36 @@
+name: 'Publish: Docker Images'
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - Dockerfile
+      - run.sh
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: docker login 🔐
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: 'publish: backstage 🔧'
+        run: |
+          docker build --target backstage -t acodeninja/cop-techdocs:latest-backstage .
+          docker tag acodeninja/cop-techdocs:backstage acodeninja/cop-techdocs:$(git rev-parse --short HEAD)-backstage
+          docker push acodeninja/cop-techdocs:$(git rev-parse --short HEAD)-backstage
+          docker push acodeninja/cop-techdocs:latest-backstage
+
+      - name: 'publish: development 🔧'
+        run: |
+          docker build --target development -t acodeninja/cop-techdocs:latest-development .
+          docker tag acodeninja/cop-techdocs:development acodeninja/cop-techdocs:$(git rev-parse --short HEAD)-development
+          docker push acodeninja/cop-techdocs:$(git rev-parse --short HEAD)-development
+          docker push acodeninja/cop-techdocs:latest-development
