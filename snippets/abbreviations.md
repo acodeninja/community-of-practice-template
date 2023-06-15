@@ -1,3 +1,7 @@
+<!-- user added -->
+*[ATDD]: Acceptance Test Driven Development
+*[TDD]: Test Driven Development
+
 <!-- https://geekflare.com/tech-abbreviations/ -->
 *[SQL]: Structured Query Language
 *[DQL]: Data Query Language
