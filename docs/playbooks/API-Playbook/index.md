@@ -15,21 +15,21 @@ This API playbook will help readers understand:
 
 New APIs **must** meet the following criteria before being considered production ready.
 
-The API fulfills an established need.
+Your API fulfills an established need.
 :    * The API supports one or more services that provide value to users.
      * The APIs scope is too distinct for inclusion in an existing API.
 
-Publish API source code publicly.
+You API source code is public.
 :    * Use open source code to improve transparency, flexibility and accountability.
      * When using open source code, ensure you attribute its source and contribute improvements back to the community.
 
-The API meets security guidelines.
+Your API meets security guidelines.
 :    * Authentication is via OAuth 2.0 and Azure AD.
      * User permissions are granted via AD group membership.
      * Access control operates at the endpoint, model or property level.
      * API to API access keys are never stored unencrypted 
 
-The API minimises data collection.
+Your API minimises data collection.
 :    * Reuse or extend existing APIs to avoid duplication of datasets.
      * You have permission to use the data stored or processed by the API.
      * You ensure that any services or downstream APIs also have permission to use and process the data.
@@ -47,7 +47,7 @@ You have an established support plan.
 
 You have identified how to measure the success of the API.
 :    * You **must** record: number of requests, number of **active** integrated services, cost per request, average 
-      response time, availability.
+       response time, availability.
      * You combine metrics with user research to understand where improvements can be made.
      * You monitor for downtime using canary requests from external services.
 
