@@ -1,6 +1,6 @@
 ## Naming Conventions
 
-#### Paths
+### Paths
 
 **MUST** use lowercase separate words with hyphens for url path segments.
 
@@ -20,7 +20,7 @@ trailing slash or not.
 /posts/ === /posts
 ```
 
-#### Query Parameters
+### Query Parameters
 
 **MUST** use snake_case for Query Parameters.
 
@@ -48,7 +48,7 @@ conventions:
 
 * `limit` - client suggested limit to restrict the number of entries on a page.
 
-#### Resource Names
+### Resource Names
 
 **MUST** pluralise resource names.
 
