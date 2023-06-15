@@ -84,6 +84,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#criteria-for-new-apis" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -689,9 +694,40 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Introduction
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Introduction
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#criteria-for-new-apis" class="md-nav__link">
+    Criteria for New APIs
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -745,6 +781,21 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#criteria-for-new-apis" class="md-nav__link">
+    Criteria for New APIs
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -776,6 +827,89 @@ production for digital transformation projects.</p>
 <li>How we support and maintain our <abbr title="Application Programming Interfaces">APIs</abbr></li>
 <li>Best practices that we have adopted as standard in our development of <abbr title="Application Programming Interfaces">APIs</abbr></li>
 </ul>
+<h2 id="criteria-for-new-apis">Criteria for New <abbr title="Application Programming Interfaces">APIs</abbr><a class="headerlink" href="#criteria-for-new-apis" title="Permanent link">&para;</a></h2>
+<p>New <abbr title="Application Programming Interfaces">APIs</abbr> <strong>must</strong> meet the following criteria before being considered production ready.</p>
+<ol>
+<li>
+<p>The <abbr title="Application Programming Interface">API</abbr> fulfills an established need.</p>
+<ul>
+<li>The <abbr title="Application Programming Interface">API</abbr> supports one or more services that provide value to users.</li>
+<li>The <abbr title="Application Programming Interfaces">APIs</abbr> scope is too distinct for inclusion in an existing <abbr title="Application Programming Interface">API</abbr>.</li>
+</ul>
+</li>
+<li>
+<p>Publish <abbr title="Application Programming Interface">API</abbr> source code publicly.</p>
+<ul>
+<li>Use open source code to improve transparency, flexibility and accountability.</li>
+<li>When using open source code, ensure you attribute its source and contribute improvements back to the community.</li>
+</ul>
+</li>
+<li>
+<p>The <abbr title="Application Programming Interface">API</abbr> meets security guidelines.</p>
+<ul>
+<li>Authentication is via OAuth 2.0 and Azure <abbr title="Administrative Domain">AD</abbr>.</li>
+<li>User permissions are granted via <abbr title="Administrative Domain">AD</abbr> group membership.</li>
+<li>Access control operates at the endpoint, model or property level.</li>
+<li><abbr title="Application Programming Interface">API</abbr> to <abbr title="Application Programming Interface">API</abbr> access keys are never stored unencrypted </li>
+</ul>
+</li>
+<li>
+<p>The <abbr title="Application Programming Interface">API</abbr> minimises data collection.</p>
+<ul>
+<li>Reuse or extend existing <abbr title="Application Programming Interfaces">APIs</abbr> to avoid duplication of datasets.</li>
+<li>You have permission to use the data stored or processed by the <abbr title="Application Programming Interface">API</abbr>.</li>
+<li>You ensure that any services or downstream <abbr title="Application Programming Interfaces">APIs</abbr> also have permission to use and process the data.</li>
+</ul>
+</li>
+<li>
+<p>You have an established plan to continually support the service.</p>
+<ul>
+<li>You have identified a product owner for the <abbr title="Application Programming Interface">API</abbr>.</li>
+<li>You have identified which team is responsible for:<ul>
+<li>Iterating and improving the <abbr title="Application Programming Interface">API</abbr> frequently.</li>
+<li>Continually scanning for and remediating security vulnerabilities.</li>
+<li>Monitoring the <abbr title="Application Programming Interface">API</abbr> and responding to alerts and incidents.</li>
+<li>Optimise the performance of all parts of the <abbr title="Application Programming Interface">API</abbr>.</li>
+</ul>
+</li>
+<li>You have an incident response plan that is documented and can be accessed by all team members, security and 
+  operations.</li>
+<li>You have a plan to decommission the <abbr title="Application Programming Interface">API</abbr> should it no longer provide value.</li>
+</ul>
+</li>
+<li>
+<p>You have identified how to measure the success of the <abbr title="Application Programming Interface">API</abbr>.</p>
+<ul>
+<li>You <strong>must</strong> record: number of requests, number of <strong>active</strong> integrated services, cost per request, average 
+  response time, availability.</li>
+<li>You combine metrics with user research to understand where improvements can be made.</li>
+<li>You monitor for downtime using canary requests from external services.</li>
+</ul>
+</li>
+<li>
+<p>Your <abbr title="Application Programming Interface">API</abbr> is clearly documented. </p>
+<ul>
+<li>Publishes documentation using the OpenAPI standard.</li>
+<li>Meets our <abbr title="Application Programming Interface">API</abbr> design principles and naming conventions.</li>
+</ul>
+</li>
+<li>
+<p>Your <abbr title="Application Programming Interface">API</abbr> is tested, then deployed.</p>
+<ul>
+<li>Ideally, Acceptance Test Driven Development (ATDD) is used to create the <abbr title="Application Programming Interface">API</abbr>.</li>
+<li>Acceptance, Integration, Unit and Security tests are run whenever new code is added.</li>
+<li>When changes are merge into the main branch of source code they are tested, then deployed to staging and 
+  production environments.</li>
+</ul>
+</li>
+<li>
+<p>You deploy to several environments.</p>
+<ul>
+<li>Functionally, staging and production environments are the same.</li>
+<li>A sandbox environment exists to aid in developing integrations, and data stored is wiped and replaced with </li>
+</ul>
+</li>
+</ol>
 <!-- https://geekflare.com/tech-abbreviations/ -->
 <!-- https://en.wikipedia.org/wiki/List_of_computing_and_IT_abbreviations -->
 <div class="admonition warning">
@@ -791,7 +925,7 @@ within each discapline's community of practice. </p>
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-06-15T11:50:47+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-06-15</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-06-15T16:11:26+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-06-15</span>
       
         <br>
         Created:
