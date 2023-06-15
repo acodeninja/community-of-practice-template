@@ -5,13 +5,13 @@ hide:
   - toc
 ---
 
-# What is a Community of Practice?
-
-!!! warning inline end "Work in Progress!"
+!!! warning "Work in Progress!"
 
     This documentation is a work in progress. 
     To check what types of components exist, check out the [Kitchen Sink](kitchen-sink.md).
     To remove this message, edit `docs/index.md` and delete `docs/kitchen-sink.md`.
+
+## What is a Community of Practice?
 
 A community of practice (CoP) is a group of people who share a concern or a passion for something they do and learn how
 to do it better as they interact regularly. CoPs are for people who share common job roles, responsibilities or remits. 
@@ -25,15 +25,12 @@ You can find out more about how to set up a CoP around a specific discipline on 
 [Community Development Framework](https://www.gov.uk/guidance/community-development-framework) guidance pages from 
 GOV.UK.
 
-!!! info inline end "Creating a new community"
+## Community Landing Pages
+
+[Architecture](./architecture){ .md-button .md-button--primary }
+[Development](./development){ .md-button .md-button--primary }
+
+!!! info "Creating a new community"
 
     To create a new landing page, decide on your community name
     and create a new file at `docs/<community>/index.md`.
-
-# Community Landing Pages
-
-[Architecture](./architecture){ .md-button .md-button--primary }
-[Delivery](./delivery){ .md-button .md-button--primary }
-[Design](./design){ .md-button .md-button--primary }
-[Development](./development){ .md-button .md-button--primary }
-[Security](./security){ .md-button .md-button--primary }
