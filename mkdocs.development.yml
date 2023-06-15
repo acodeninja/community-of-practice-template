@@ -25,6 +25,7 @@ plugins:
       lang: en
 
 extra_css:
+  - assets/stylesheets/theme.css
   - assets/stylesheets/diagrams.css
 
 extra_javascript:
