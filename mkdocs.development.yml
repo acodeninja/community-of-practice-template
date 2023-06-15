@@ -48,6 +48,9 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.snippets:
+      auto_append:
+        - snippets/work-in-progress.md
   - pymdownx.superfences:
       custom_fences:
         - name: diagram-plantuml

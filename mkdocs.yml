@@ -16,6 +16,7 @@ markdown_extensions:
   - pymdownx.snippets:
       auto_append:
         - snippets/abbreviations.md
+        - snippets/work-in-progress.md
   - pymdownx.superfences:
       custom_fences:
         - name: diagram-plantuml

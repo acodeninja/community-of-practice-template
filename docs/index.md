@@ -5,12 +5,6 @@ hide:
   - toc
 ---
 
-!!! warning "Work in Progress!"
-
-    This documentation is a work in progress. 
-    To check what types of components exist, check out the [Kitchen Sink](kitchen-sink.md).
-    To remove this message, edit `docs/index.md` and delete `docs/kitchen-sink.md`.
-
 ## What is a Community of Practice?
 
 A community of practice (CoP) is a group of people who share a concern or a passion for something they do and learn how
