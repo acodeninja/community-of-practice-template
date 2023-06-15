@@ -26,3 +26,11 @@ markdown_extensions:
   - toc:
       permalink: true
       title: On this page
+
+plugins:
+  - git-revision-date-localized:
+      enabled: true
+      enable_creation_date: true
+      type: timeago
+  - search:
+      lang: en
