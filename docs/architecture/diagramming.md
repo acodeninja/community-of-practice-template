@@ -12,6 +12,9 @@ This is where effective diagramming comes in, presenting abstracted contextual v
 will enable technical and non-technical participants to have a shared vision of the system and aid in discussing issues
 that present themselves during development.
 
+To ensure diagrams clearly communicate the intended contextual information it's a good idea to assess diagrams for 
+clarity. The [C4 Diagram Bingo card](https://c4model.com/bingo/) can make assessing diagrams more engaging.
+
 For more information on C4 diagramming see [the C4 website](https://c4model.com/).
 
 ## Core Diagrams
