@@ -10,3 +10,57 @@ This API playbook will help readers understand:
 * How we go about building our APIs
 * How we support and maintain our APIs
 * Best practices that we have adopted as standard in our development of APIs
+
+## Criteria for New APIs
+
+New APIs **must** meet the following criteria before being considered production ready.
+
+1. The API fulfills an established need.
+    * The API supports one or more services that provide value to users.
+    * The APIs scope is too distinct for inclusion in an existing API.
+
+2. Publish API source code publicly.
+    * Use open source code to improve transparency, flexibility and accountability.
+    * When using open source code, ensure you attribute its source and contribute improvements back to the community.
+
+3. The API meets security guidelines.
+    * Authentication is via OAuth 2.0 and Azure AD.
+    * User permissions are granted via AD group membership.
+    * Access control operates at the endpoint, model or property level.
+    * API to API access keys are never stored unencrypted 
+
+4. The API minimises data collection.
+    * Reuse or extend existing APIs to avoid duplication of datasets.
+    * You have permission to use the data stored or processed by the API.
+    * You ensure that any services or downstream APIs also have permission to use and process the data.
+
+5. You have an established plan to continually support the service.
+    * You have identified a product owner for the API.
+    * You have identified which team is responsible for:
+        * Iterating and improving the API frequently.
+        * Continually scanning for and remediating security vulnerabilities.
+        * Monitoring the API and responding to alerts and incidents.
+        * Optimise the performance of all parts of the API.
+    * You have an incident response plan that is documented and can be accessed by all team members, security and 
+      operations.
+    * You have a plan to decommission the API should it no longer provide value.
+
+6. You have identified how to measure the success of the API.
+    * You **must** record: number of requests, number of **active** integrated services, cost per request, average 
+      response time, availability.
+    * You combine metrics with user research to understand where improvements can be made.
+    * You monitor for downtime using canary requests from external services.
+
+7. Your API is clearly documented. 
+    * Publishes documentation using the OpenAPI standard.
+    * Meets our API design principles and naming conventions.
+
+8. Your API is tested, then deployed.
+    * Ideally, Acceptance Test Driven Development (ATDD) is used to create the API.
+    * Acceptance, Integration, Unit and Security tests are run whenever new code is added.
+    * When changes are merge into the main branch of source code they are tested, then deployed to staging and 
+      production environments.
+
+9. You deploy to several environments.
+    * Functionally, staging and production environments are the same.
+    * A sandbox environment exists to aid in developing integrations, and data stored is wiped and replaced with 
