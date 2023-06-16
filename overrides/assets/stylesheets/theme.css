@@ -3,3 +3,7 @@
     --md-primary-fg-color--light: #65ddf7;
     --md-primary-fg-color--dark: #065566;
 }
+
+a {
+    text-decoration: underline;
+}
