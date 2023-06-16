@@ -2,7 +2,7 @@
 title: 'Record decisions using MADR'
 ---
 
-# D0001: Record decisions using MADR
+# E0001: Record decisions using MADR
 
 Proposed :material-help-circle: | 14 June 2023 | [Lawrence Goldstien](https://github.com/acodeninja)
 
@@ -22,7 +22,7 @@ consistent style, allowing team members to understand the reasons behind a decis
 Chosen option: "MADR - Markdown Any Decision Records", because it allows for recording contextual information, has a 
 straightforward template format, and optional fields should a decision only require a light touch explainer.
 
-Developer decision records shall be created with the D prefix: i.e.: "D0001: Record decisions using MADR".
+Engineering decision records shall be created with the E prefix: i.e.: "E0001: Record decisions using MADR".
 
 ## Consequences
 
