@@ -1,4 +1,54 @@
-## Naming Conventions
+## Documentation
+
+### Types
+
+**MUST** include text documentation.
+
+Documentation must be provided that:
+
+* Has steps needed to set up a local development environment.
+* Has a summary of the APIs purpose and main data models it stores.
+* Has a [runbook](https://www.pagerduty.com/resources/learn/what-is-a-runbook/).
+
+**MUST** include machine-readable API specification.
+
+**MUST** include a development and architectural decision record.
+
+A decision record must be included to document major technology and design choices.
+
+### Format
+
+**MUST** use Markdown format for documentation.
+
+Text documentation must be written in [Markdown](https://www.markdownguide.org/) format.
+
+**MUST** use OpenAPI to document REST APIs.
+
+The [OpenAPI](https://spec.openapis.org/oas/v3.1.0) specification is machine-readable and can be rendered to HTML,
+providing an interactive and human-readable suite of documentation.
+
+**MUST** use MADR format to document decisions.
+
+As per [E0001: Record decisions using MADR](../../engineering/decision-records/E0001-record-decisions-using-madr.md) all
+decision records must use MADR format. Decision records must be kept under `docs/decisions/`, each filename must be in
+format `docs/decisions/<reference>-<hyphen separated title>.md`.
+
+### Place
+
+**MUST** place documentation next to code.
+
+Where all code for a project is stored in the same repository, documentation must be placed in the same repository in
+the `docs/` directory.
+
+Where code for a project spans multiple repositories, documentation specific to each codebase must be placed in the 
+`docs/` directory for each repository.
+
+**MUST** publish documentation.
+
+Using a tool like [mkdocs](https://www.mkdocs.org/), documentation must be rendered and published to a publicly 
+accessible website.
+
+## Naming
 
 ### Paths
 

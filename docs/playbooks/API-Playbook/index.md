@@ -1,7 +1,7 @@
 ---
-title: Introduction
+title: API Playbook
 ---
-
+ 
 APIs are an essential part of modern software development, and when correctly managed, APIs can reduce time to
 production for digital transformation projects.
 
@@ -25,7 +25,7 @@ You API source code is public.
 
 Your API meets security guidelines.
 :    * Authentication is via OAuth 2.0 and Azure AD.
-     * User permissions are granted via AD group membership.
+     * User permissions are granted via Azure AD group membership.
      * Access control operates at the endpoint, model or property level.
      * API to API access keys are never stored unencrypted 
 
@@ -58,7 +58,8 @@ Your API is clearly documented.
 Your API is tested, then deployed.
 :    * Ideally, Acceptance Test Driven Development (ATDD) is used to create the API.
      * Acceptance, Integration, Unit and Security tests are run whenever new code is added.
-     * When changes are merge into the main branch of source code they are tested, then deployed to staging and 
+     * No production code is written without tests that cover its functionality.
+     * When changes are merged into the main branch of source code they are tested, then deployed to staging and 
        production environments.
 
 You deploy to several environments.
