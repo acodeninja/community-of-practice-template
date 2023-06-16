@@ -1,6 +1,9 @@
 <!-- user added -->
 *[ATDD]: Acceptance Test Driven Development
 *[TDD]: Test Driven Development
+*[Azure AD]: Azure Active Directory
+*[CoP]: Community of Practice
+*[MADR]: Markdown Any Decision Record
 
 <!-- https://geekflare.com/tech-abbreviations/ -->
 *[SQL]: Structured Query Language
