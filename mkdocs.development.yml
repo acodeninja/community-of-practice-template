@@ -9,7 +9,6 @@ theme:
   logo: assets/images/logo.svg
   features:
     - content.action.edit
-    - navigation.expand
     - navigation.instant
     - navigation.tabs
     - navigation.tabs.sticky
@@ -23,6 +22,7 @@ plugins:
       type: timeago
   - search:
       lang: en
+  - section-index
 
 extra_css:
   - assets/stylesheets/theme.css
