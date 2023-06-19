@@ -38,42 +38,24 @@ low-level details. It's the sort of diagram that you could show to non-technical
 !include <C4/C4_Context>
 !include <office/Users/user.puml>
 
-title Social Care Case Management Context Diagram
+title System Context diagram for Internet Banking System
 
-Person(care_practitioners, Social Care Practitioner, "<$user> <$user>\n Adult and Children")
-Person_Ext(external_referrers, External Referrers, "<$user> <$user>\n Doctors, Police, Teachers ...")
-Person(data_insight_team, Data and Insight Team)
+Person(customer, "Personal Banking Customer", "A customer of the bank, with personal bank accounts.")
+System(banking_system, "Internet Banking System", "Allows customers to view information about their bank accounts, and make payments.")
 
-System_Boundary(system, "Social Care") {
-  System(mash_referral, "MASH Referrals", "Processes incoming Referrals")
-  System(social_care_cases, "Social Care Case Management", "Practitioners to manage case information.")
-  System(social_care_workflows, "Core Pathways", "Practitioners to manage case workflows.")
-  System_Ext(qlik, "Qlik Analytics", "ETL & Case progress reporting")
-  System_Ext(google, "Google Services", "Forms\nSheets\nDocs\nGroups")
-  System_Ext(social_care_finance, "Social Care Finance", "Care package management, procurement and accounting.")
-}
+System_Ext(mail_system, "E-mail system", "The internal Microsoft Exchange e-mail system.")
+System_Ext(mainframe, "Mainframe Banking System", "Stores all of the core banking information about customers, accounts, transactions, etc.")
 
-Rel(care_practitioners, social_care_cases, "Manage cases using")
-Rel(care_practitioners, qlik, "View / create dashboards and reports")
-Rel(care_practitioners, google, "Redirected by Social Care App to add data in")
-Rel(data_insight_team, qlik, "Manage data extraction and reporting pipelines")
-Rel(qlik, social_care_cases, "Hourly data export")
-Rel(google, qlik, "Data ingestion via Google API")
-Rel(social_care_cases, google, "Authenticates with groups and view Google Docs")
-Rel(social_care_workflows, google, "Authenticates with groups and view Google Docs")
-Rel(external_referrers, google, "Submit referrals via public form")
-BiRel(google, mash_referral, "Proxy referrals. Generate google docs")
-Rel(mash_referral, social_care_cases, "Submit to")
-BiRel(social_care_finance, social_care_cases, "TBD")
-Rel(care_practitioners, social_care_workflows, "Start an assessment")
-BiRel(social_care_cases, social_care_workflows, "Share resident data")
-BiRel(social_care_finance, social_care_workflows, "TBD")
+Rel(customer, banking_system, "Uses")
+Rel_Back(customer, mail_system, "Sends e-mails to")
+Rel_Neighbor(banking_system, mail_system, "Sends e-mails", "SMTP")
+Rel(banking_system, mainframe, "Uses")
 
 SHOW_DYNAMIC_LEGEND()
 @enduml
 ```
 
-Source: [Hackney Social Care Context Diagram](https://lbhackney-it.github.io/social-care-architecture/#social-care-case-management-context-diagram)
+Source: [C4 Model Sample Context Diagram](https://github.com/plantuml-stdlib/C4-PlantUML/blob/master/samples/C4_Context%20Diagram%20Sample%20-%20bigbankplc.puml)
 
 !!! info "System Context Diagram Details"
 
@@ -106,70 +88,39 @@ alike.
 @startuml
 !include <C4/C4_Container>
 
-'ref http://plantuml.com/stdlib
-!include <office/Users/user.puml>
-!include <office/Users/mobile_user.puml>
+title Container diagram for Internet Banking System
 
-title Social Care System Container Diagram
+Person(customer, Customer, "A customer of the bank, with personal bank accounts")
 
-Person(care_practitioners, Social Care Practitioner, "<$user> <$user>\n Adult and Children" )
-Person(data_insight_team, Data and Insight Team )
-
-System_Ext(qlik, "Qlik Analytics", "ETL & Case progress reporting")
-
-System_Boundary(googles, "Google") {
-  System_Ext(google_auth, "Google Groups", "Provides User Authentication and Authorisation")
-  System_Ext(google_forms, "Google Forms", "Data submissions (57 forms)")
-  System_Ext(google_sheets, "Google Sheets", "Form submission data")
-  System_Ext(google_docs, "Google Docs", "Generated for viewing (AppScript)")
+System_Boundary(c1, "Internet Banking") {
+    Container(web_app, "Web Application", "Java, Spring MVC", "Delivers the static content and the Internet banking SPA")
+    Container(spa, "Single-Page App", "JavaScript, Angular", "Provides all the Internet banking functionality to customers via their web browser")
+    Container(mobile_app, "Mobile App", "C#, Xamarin", "Provides a limited subset of the Internet banking functionality to customers via their mobile device")
+    ContainerDb(database, "Database", "SQL Database", "Stores user registration information, hashed auth credentials, access logs, etc.")
+    Container(backend_api, "API Application", "Java, Docker Container", "Provides Internet banking functionality via API")
 }
 
-System_Boundary(system, "Social Care") {
-  System_Boundary(case-management, "Case Management") {
-    Container(social_care_front_end, "Social Care Front End", "Lambda, Next.js (React)", "Allows practitioners to edit case information.")
-    Container(social_care_service_api, "Social Care Case Viewer Service API", "Lambda, C#", "Provides backend API for the Social Care Front End")
-  }
+System_Ext(email_system, "E-Mail System", "The internal Microsoft Exchange system")
+System_Ext(banking_system, "Mainframe Banking System", "Stores all of the core banking information about customers, accounts, transactions, etc.")
 
-  System_Boundary(core-pathways, "Core Pathways") {
-    Container(social_care_core_pathways, "Social Care Core Pathways Front End", "Lambda, Next.js (React)", "Allows practitioners to create new assessments against a resident/case.")
-  }
+Rel(customer, web_app, "Uses", "HTTPS")
+Rel(customer, spa, "Uses", "HTTPS")
+Rel(customer, mobile_app, "Uses")
 
-  System_Boundary(finance, "Finance") {
-    Container(adult_social_care_front_end, "Adult Social Care Care Package Builder Front End", "Lambda, React", "Allows adult social care workers to build and manage care packages.")
-    Container(adult_social_care_api, "Adult Social Care Care Package Builder API", "Lambda, .NET (C#)", "Allows adult social care workers to build and manage care packages.")
-    Container(adult_social_care_transactions_api, "Adult Social Care Package Builder Transactions API", "Lambda, .NET (C#)", "Manages transactions and payments relating to adult social care.")
-  }
-}
+Rel_Neighbor(web_app, spa, "Delivers")
+Rel(spa, backend_api, "Uses", "async, JSON/HTTPS")
+Rel(mobile_app, backend_api, "Uses", "async, JSON/HTTPS")
+Rel_Back_Neighbor(database, backend_api, "Reads from and writes to", "sync, JDBC")
 
-Rel(care_practitioners, social_care_front_end, "Manage cases using", "JSON/HTTPS")
-Rel(care_practitioners, social_care_core_pathways, "Manage assessments for cases/residents", "JSON/HTTPS")
-Rel(care_practitioners, google_forms, "Redirected by Social Care App to add data in", "JSON/HTTPS")
-Rel(care_practitioners, google_docs, "Redirected by Social Care App to view form submissions", "HTTPS")
-Rel(care_practitioners, qlik, "View / create dashboards and reports")
-Rel(care_practitioners, adult_social_care_front_end, "Create care packages using", "JSON/HTTPS")
-
-Rel(adult_social_care_front_end, adult_social_care_api, "Manage care packages using", "JSON/HTTPS")
-Rel(adult_social_care_api, adult_social_care_transactions_api, "Manage transactions / payments using", "JSON/HTTPS")
-
-Rel(social_care_core_pathways, social_care_service_api, "Get case / resident details", "JSON/HTTPS")
-
-Rel_D(data_insight_team, qlik, "Manage data extraction and reporting pipelines")
-
-Rel(social_care_front_end, social_care_service_api, "Read / Write", "JSON/HTTPS")
-Rel(social_care_front_end, google_auth, "Authenticates practitioners via", "JSON/HTTPS")
-
-Rel(qlik, social_care_service_api, "Hourly CSV export of form data to S3", "Qlik / AWS integration")
-
-Rel(google_forms, google_sheets, "Submitted data stored in")
-Rel(google_sheets, qlik, "Data ingestion", "Google API")
-Rel(google_sheets, google_docs, "Generated from form data")
-Rel_U(google_docs, google_auth, "Access restricted with")
+Rel_Back(customer, email_system, "Sends e-mails to")
+Rel_Back(email_system, backend_api, "Sends e-mails using", "sync, SMTP")
+Rel_Neighbor(backend_api, banking_system, "Uses", "sync/async, XML/HTTPS")
 
 SHOW_DYNAMIC_LEGEND()
 @enduml
 ```
 
-Source: [Hackney Social Care Container Diagram](https://lbhackney-it.github.io/social-care-architecture/#container-diagram)
+Source: [C4 Model Sample Container Diagram](https://github.com/plantuml-stdlib/C4-PlantUML/blob/master/samples/C4_Container%20Diagram%20Sample%20-%20bigbankplc.puml)
 
 !!! info "Container Diagram Details"
 
@@ -227,7 +178,7 @@ SHOW_DYNAMIC_LEGEND()
 @enduml
 ```
 
-Source: [C4 Model Sample Component Diagram](https://github.com/plantuml-stdlib/C4-PlantUML/blob/master/samples/C4CoreDiagrams.md#component-diagram)
+Source: [C4 Model Sample Component Diagram](https://github.com/plantuml-stdlib/C4-PlantUML/blob/master/samples/C4_Component%20Diagram%20Sample%20-%20bigbankplc.puml)
 
 !!! info "Component Diagram Details"
 
@@ -255,58 +206,44 @@ landscape diagram is really just a system context diagram without a specific foc
 'ref http://plantuml.com/stdlib
 !include <C4/C4_Context>
 
-title Social Care System Landscape Diagram
+title System Landscape diagram for Big Bank plc
 
-Person(care_practitioners, Social Care Practitioners, "Adult and Children")
-Person_Ext(external_referrers, External Referrers, "Doctors, Police, Teachers ...")
-Person(data_insight_team, Data and Insight Team)
+Person(customer, "Personal Banking Customer", "A customer of the bank, with personal bank accounts.")
 
-Person(brokerage_team, Brokerage team)
-Person(care_charge_team, Care charge team) 
-Person(pay_runs_team, Pay runs team)
-Person(cedar_team, Cedar team)
+Enterprise_Boundary(c0, "Big Bank plc") {
+    System(banking_system, "Internet Banking System", "Allows customers to view information about their bank accounts, and make payments.")
 
-System_Boundary(system, "Social Care") {
-  System(social_care_cases, "Social Care Case Management", "Manage case information.", $link="https://lbhackney-it.github.io/social-care-architecture/#social-care-case-management-context-diagram")
-  System(social_care_core_pathways, "Social Care Core Pathways", "Manage assessment information.")
-  System(social_care_finance, "Social Care Finance", "Care package management, procurement and accounting.")
-  System_Ext(qlik, "Qlik Analytics", "ETL & Case progress reporting")
-  System_Ext(google, "Google Services", "User Groups\nForms (Sheets)\nDocs")
-  System_Ext(cedar, "Cedar", "Central Finance Platform")
-  System(document_management, "Document Management System")
+    System_Ext(atm, "ATM", "Allows customers to withdraw cash.")
+    System_Ext(mail_system, "E-mail system", "The internal Microsoft Exchange e-mail system.")
+
+    System_Ext(mainframe, "Mainframe Banking System", "Stores all of the core banking information about customers, accounts, transactions, etc.")
+
+    Person_Ext(customer_service, "Customer Service Staff", "Customer service staff within the bank.")
+    Person_Ext(back_office, "Back Office Staff", "Administration and support staff within the bank.")
 }
 
-Rel(care_practitioners, social_care_cases, "Manage cases")
-Rel(care_practitioners, social_care_core_pathways, "Manage assessments")
-Rel(care_practitioners, qlik, "View / create dashboards and reports")
-Rel(care_practitioners, google, "Redirected from case system to add / view data in google forms & docs")
-Rel(data_insight_team, qlik, "Manage data extraction and reporting pipelines")
-Rel(qlik, social_care_cases, "Hourly data export")
-BiRel(document_management, social_care_finance, "Document uploads/downloads")
-Rel(cedar_team, cedar, "Cedar finance package")
-Rel(pay_runs_team, social_care_finance, "Manage invoices and purchase orders")
-Rel(pay_runs_team, cedar_team, "Cedar finance package")
-Rel(pay_runs_team, cedar, "Cedar finance package")
-Rel(pay_runs_team, brokerage_team, "Brokerage packages")
-Rel(google, qlik, "Data ingestion via Google API")
-Rel(social_care_cases, google, "Authenticate users")
-Rel(social_care_core_pathways, google, "Authenticate users")
-Rel(social_care_core_pathways, social_care_cases, "Get resident data")
-Rel_L(external_referrers, google, "Submit referrals via public form")
-Rel(cedar,social_care_finance, "Supplier information")
-BiRel(google, social_care_cases, "Proxy referrals. Generate google docs")
-Rel(social_care_finance, pay_runs_team, "Cedar fianance package")
-Rel(social_care_cases, social_care_finance, "Service user information")
-Rel(brokerage_team, social_care_finance, "Handover" )
-Rel(care_charge_team, social_care_finance, "Logging care charge values")
-Rel(care_practitioners, brokerage_team, "Creates a care plan")
-BiRel(care_practitioners, care_charge_team, "Financial assessment")
+Rel_Neighbor(customer, banking_system, "Uses")
+Rel_R(customer, atm, "Withdraws cash using")
+Rel_Back(customer, mail_system, "Sends e-mails to")
+
+Rel_R(customer, customer_service, "Asks questions to", "Telephone")
+
+Rel_D(banking_system, mail_system, "Sends e-mail using")
+Rel_R(atm, mainframe, "Uses")
+Rel_R(banking_system, mainframe, "Uses")
+Rel_D(customer_service, mainframe, "Uses")
+Rel_U(back_office, mainframe, "Uses")
+
+Lay_D(atm, banking_system)
+
+Lay_D(atm, customer)
+Lay_U(mail_system, customer)
 
 SHOW_DYNAMIC_LEGEND()
 @enduml
 ```
 
-Source: [Hackney Social Care System Landscape Diagram](https://lbhackney-it.github.io/social-care-architecture/#system-landscape-diagram)
+Source: [C4 Model Sample System Landscape Diagram](https://github.com/plantuml-stdlib/C4-PlantUML/blob/master/samples/C4_Context%20Diagram%20Sample%20-%20bigbankplc-landscape.puml)
 
 !!! info "System Landscape Diagram Details"
 
@@ -330,157 +267,71 @@ These diagrams are useful when discussing concerns around infrastructure and sec
 @startuml
 !include <C4/C4_Deployment>
 
-title Social Care System Deployment Diagram
+AddElementTag("fallback", $bgColor="#c0c0c0")
+AddRelTag("fallback", $textColor="#c0c0c0", $lineColor="#438DD5")
 
-Deployment_Node(aws, "AWS", "Region: eu-west-2") {
+WithoutPropertyHeader()
 
-  Deployment_Node(aws_mosaic_production, "Mosaic-Production", "Account") {
+' calculated legend is used (activated in last line)
+' LAYOUT_WITH_LEGEND()
 
-    Deployment_Node(mosaic_production_case_management, "Case Management") {
+title Deployment Diagram for Internet Banking System - Live
 
-      Deployment_Node(aws_production_apis_api_gateway, "API Gateway") {
-        Container(frontend_api_gateway, "Social Care Frontend", "API Gateway", "Provides routing.")
-      }
-
-      Deployment_Node(aws_production_apis_lambda, "Lambda") {
-        Container(frontend_api_lambda, "Social Care Frontend", "Lambda, Next.js (React)", "Provides the UI/UX of the Social Care System.")
-      }
-
-      Deployment_Node(aws_mosaic_production_api_gateway, "API Gateway") {
-        Container(service_api_api_gateway, "Social Care Case Viewer API", "API Gateway", "Provides routing and auth via API keys.")
-      }
-
-      Deployment_Node(aws_mosaic_production_lambda, "Lambda") {
-        Container(service_api_lambda, "Social Care Case Viewer API", "Lambda, C#", "Provides service API capabilities to the Social Care System.")
-        Container(service_api_pg_import_lambda, "Social Care Case Viewer API - PostgresQL Import", "Lambda, C#", "Imports allocations.")
-        Container(service_api_mongodb_import_lambda, "Social Care Case Viewer API - MongoDB Import", "Lambda, C#", "Imports form data.")
-      }
-
-      Deployment_Node(aws_mosaic_production_rds, "RDS") {
-        ContainerDb(service_api_rds, "Social Care Case Viewer API", "PostgreSQL", "Stores persons, workers and allocations.")
-        ContainerDb(platform_api_rds, "Resident Social Care Platform API", "PostgreSQL", "Stores historic case notes and visits.")
-      }
-
-      Deployment_Node(aws_mosaic_production_docdb, "DocumentDB") {
-        ContainerDb(service_api_docdb, "Social Care Case Viewer API", "MongoDB", "Stores form data.")
-      }
-
-      Deployment_Node(aws_mosaic_production_s3, "S3") {
-        Container(service_api_s3, "Social Care Case Viewer API - Qlik Import", "CSV", "Stores allocations and form data.")
-      }
-
+Deployment_Node(plc, "Live", "Big Bank plc", "Big Bank plc data center"){
+    AddProperty("Location", "London and Reading")
+    Deployment_Node_L(dn, "bigbank-api***\tx8", "Ubuntu 16.04 LTS", "A web server residing in the web server farm, accessed via F5 BIG-IP LTMs."){
+        AddProperty("Java Version", "8")
+        AddProperty("Xmx", "512M")
+        AddProperty("Xms", "1024M")
+        Deployment_Node_L(apache, "Apache Tomcat", "Apache Tomcat 8.x", "An open source Java EE web server."){
+            Container(api, "API Application", "Java and Spring MVC", "Provides Internet Banking functionality via a JSON/HTTPS API.")
+        }
     }
-
-    Deployment_Node(mosaic_production_finance, "Finance") {
-
-      Deployment_Node(aws_mosaic_production_api_gateway_finance, "API Gateway") {
-        Container(adult_social_care_builder_frontend_api_gateway, "Adult Social Care Care Package Builder Frontend", "API Gateway", "Provides routing.")
-        Container(adult_social_care_builder_api_api_gateway, "Adult Social Care Care Package Builder API", "API Gateway", "Provides routing.")
-        Container(adult_social_care_builder_transactions_api_api_gateway, "Adult Social Care Care Package Builder Transactions API", "API Gateway", "Provides routing.")
-      }
-
-      Deployment_Node(aws_mosaic_production_lambda_finance, "Lambda") {
-        Container(adult_social_care_builder_frontend_lambda, "Adult Social Care Care Package Builder Frontend", "Lambda, Next.js (React)", "Provides the UI/UX of the Adult Social Care Care Package Builder System.")
-        Container(adult_social_care_builder_api_lambda, "Adult Social Care Care Package Builder API", "Lambda, C#", "Provides service API capabilities to the Adult Social Care Care Package Builder System.")
-        Container(adult_social_care_builder_transactions_api_lambda, "Adult Social Care Care Package Builder Transactions API", "Lambda, C#", "Handles transaction and finance related services to the Adult Social Care Care Package Builder System.")
-      }
-
-      Deployment_Node(aws_mosaic_production_rds_finance, "RDS") {
-        ContainerDb(adult_social_care_builder_api_rds, "Adult Social Care Care Package Builder API", "PostgreSQL", "Stores care package related records.")
-        ContainerDb(adult_social_care_builder_transactions_api_rds, "Adult Social Care Care Package Builder Transactions API", "PostgreSQL", "Stores transaction records related to care packages.")
-      }
+    AddProperty("Location", "London")
+    Deployment_Node_L(bigbankdb01, "bigbank-db01", "Ubuntu 16.04 LTS", "The primary database server."){
+        Deployment_Node_L(oracle, "Oracle - Primary", "Oracle 12c", "The primary, live database server."){
+            ContainerDb(db, "Database", "Relational Database Schema", "Stores user registration information, hashed authentication credentials, access logs, etc.")
+        }
     }
-
-    Deployment_Node(mosaic_production_social_care_referrals, "Social Care Referrals (MASH) Data Processing") {
-      Deployment_Node(aws_mosaic_production_S3_proxy_api_gateway, "S3 API Gateway Proxy") {
-        Container(social_care_s3_api_gateway, "Social Care Referrals S3 API", "API Gateway", "Provides API proxy that accepts HTTP requests to add objects to S3")
-        Container(social_care_referrals_aws_s3, "Social Care Referrals S3 Bucket", "Mash form data, JSON", "Stores form data submitted via the MASH referral form")
-      }
-
-      Deployment_Node(aws_mosaic_production_referrals_lambda, "Lambda") {
-        Container(social_care_referrals_lambda, "Social Care Referral Form Data Ingestion", "Typescript", "Gets referral data from S3, creates Google Doc and sends the data to be stored in the Social Care Case Management System")
-      }
-
-      Deployment_Node(aws_mosaic_production_referrals_sqs, "SQS") {
-        Container(social_care_referrals_aws_sqs, "Social Care Referrals Queue", "Main queue, Deadletter queue", "Receives an event notification from S3 when an object is created in the bucket")
-      }
+    AddProperty("Location", "Reading")
+    Deployment_Node_R(bigbankdb02, "bigbank-db02", "Ubuntu 16.04 LTS", "The secondary database server.", $tags="fallback") {
+        Deployment_Node_R(oracle2, "Oracle - Secondary", "Oracle 12c", "A secondary, standby database server, used for failover purposes only.", $tags="fallback") {
+            ContainerDb(db2, "Database", "Relational Database Schema", "Stores user registration information, hashed authentication credentials, access logs, etc.", $tags="fallback")
+        }
     }
-  }
-
-  Deployment_Node(aws_workflows_production, "Social-Care-Workflows-Production", "Account") {
-      Deployment_Node(aws_workflows_production_api_gateway, "API Gateway") {
-        Container(social_care_workflows_frontend_api_gateway, "Social Care Core Pathways Frontend", "API Gateway", "Provides routing.")
-      }
-
-      Deployment_Node(aws_workflows_production_lambda, "Lambda") {
-        Container(social_care_workflows_frontend_api_lambda, "Social Care Core Pathways Frontend", "Lambda, Next.js (React)", "Provides the UI/UX of the Social Care System.")
-      }
-
-      Deployment_Node(aws_workflows_production_rds, "RDS") {
-        ContainerDb(workflows_rds, "Social Care Core Pathways", "PostgreSQL (13)", "Stores workflows, teams, and users.")
-      }
-
-      Deployment_Node(aws_workflows_production_s3, "S3") {
-        Container(workflows_api_s3, "Social Care Core Pathways Configuration", "JSON", "Stores configuration data.")
-      }
-
-      Rel(social_care_workflows_frontend_api_gateway, social_care_workflows_frontend_api_lambda, "Uses", "HTTPS")
-      Rel(social_care_workflows_frontend_api_lambda, workflows_rds, "Reads from and writes to", "Prisma ORM")
-      Rel(social_care_workflows_frontend_api_lambda, workflows_api_s3, "Reads from", "S3 Client")
-      Rel(social_care_workflows_frontend_api_lambda, service_api_api_gateway, "Reads resident details", "HTTPS/JSON")
-  }
+    AddProperty("Location", "London and Reading")
+    Deployment_Node_R(bb2, "bigbank-web***\tx4", "Ubuntu 16.04 LTS", "A web server residing in the web server farm, accessed via F5 BIG-IP LTMs."){
+        AddProperty("Java Version", "8")
+        AddProperty("Xmx", "512M")
+        AddProperty("Xms", "1024M")
+        Deployment_Node_R(apache2, "Apache Tomcat", "Apache Tomcat 8.x", "An open source Java EE web server."){
+            Container(web, "Web Application", "Java and Spring MVC", "Delivers the static content and the Internet Banking single page application.")
+        }
+    }
 }
 
-Deployment_Node(contentful, "Contentful CMS", "Hackney") {
-  Container(social_care_workflows_contentful, "Social Care Core Pathways Configuration", "Contains configuration for core pathways forms, next steps and answer filters.")
+Deployment_Node(mob, "Customer's mobile device", "Apple IOS or Android"){
+    Container(mobile, "Mobile App", "Xamarin", "Provides a limited subset of the Internet Banking functionality to customers via their mobile device.")
 }
 
-Rel(social_care_workflows_contentful, workflows_api_s3, "Writes to", "S3 Client")
-
-Deployment_Node(google, "Google Cloud Platform", "Hackney") {
-  Container(social_care_referral_mash_apps_script, "Social Care Referrals Apps Script", "Google Apps Script", "Receives MASH form data and sends it to AWS for further processing")
+Deployment_Node(comp, "Customer's computer", "Microsoft Windows of Apple macOS"){
+    Deployment_Node(browser, "Web Browser", "Google Chrome, Mozilla Firefox, Apple Safari or Microsoft Edge"){
+        Container(spa, "Single Page Application", "JavaScript and Angular", "Provides all of the Internet Banking functionality to customers via their web browser.")
+    }
 }
 
-Rel(frontend_api_gateway, frontend_api_lambda, "Uses", "HTTPS")
-Rel(frontend_api_lambda, service_api_api_gateway, "Uses", "JSON/HTTPS")
-
-Rel(service_api_api_gateway, service_api_lambda, "Uses", "HTTPS")
-Rel(service_api_lambda, service_api_rds, "Reads from and writes to", "Entity Framework")
-Rel(service_api_lambda, service_api_docdb, "Reads from and writes to", "Entity Framework")
-Rel(service_api_lambda, platform_api_rds, "Reads from and writes to", "Entity Framework")
-
-' Adult Social Care Care Package Builder
-Rel(adult_social_care_builder_frontend_lambda, adult_social_care_builder_api_api_gateway, "Uses", "HTTPS/JSON")
-Rel(adult_social_care_builder_api_api_gateway, adult_social_care_builder_api_lambda, "Uses", "HTTPS")
-Rel(adult_social_care_builder_api_lambda, adult_social_care_builder_api_rds, "Reads from and writes to", "Entity Framework")
-Rel(adult_social_care_builder_frontend_api_gateway, adult_social_care_builder_frontend_lambda, "Uses", "HTTPS")
-
-' Adult Social Care Care Package Transactions
-Rel(adult_social_care_builder_transactions_api_api_gateway, adult_social_care_builder_transactions_api_lambda, "Uses", "HTTPS")
-Rel(adult_social_care_builder_transactions_api_lambda, adult_social_care_builder_transactions_api_rds, "Reads from and writes to", "Entity Framework")
-
-' Adult Social Care Care Package Builder -> Adult Social Care Care Package Transactions
-Rel(adult_social_care_builder_api_lambda, adult_social_care_builder_transactions_api_api_gateway, "Uses", "JSON/HTTPS")
-
-Rel(service_api_s3, service_api_mongodb_import_lambda, "Triggers", "S3 Event Notification")
-Rel(service_api_mongodb_import_lambda, service_api_docdb, "Imports into")
-
-Rel(service_api_s3, service_api_pg_import_lambda, "Triggers", "S3 Event Notification")
-Rel(service_api_pg_import_lambda, service_api_rds, "Imports into")
-
-' Social Care Referrals Form Data Ingestion
-Rel(social_care_referral_mash_apps_script, social_care_s3_api_gateway, "Uses", "JSON/HTTPS")
-Rel(social_care_s3_api_gateway, social_care_referrals_aws_s3, "Creates", "JSON")
-Rel(social_care_referrals_aws_s3, social_care_referrals_aws_sqs, "Sends", "S3 Event Notification")
-Rel(social_care_referrals_aws_sqs, social_care_referrals_lambda, "Triggers", "SQS Event Notification")
-Rel(social_care_referrals_lambda, social_care_referrals_aws_s3, "Reads from", "S3 Object")
-Rel(social_care_referrals_lambda, service_api_api_gateway, "Uses", "JSON/HTTPS")
+Rel(mobile, api, "Makes API calls to", "json/HTTPS")
+Rel(spa, api, "Makes API calls to", "json/HTTPS")
+Rel_U(web, spa, "Delivers to the customer's web browser")
+Rel(api, db, "Reads from and writes to", "JDBC")
+Rel(api, db2, "Reads from and writes to", "JDBC", $tags="fallback")
+Rel_R(db, db2, "Replicates data to")
 
 SHOW_DYNAMIC_LEGEND()
 @enduml
 ```
 
-Source: [Hackney Social Care Deployment Diagram](https://lbhackney-it.github.io/social-care-architecture/#deployment-diagram)
+Source: [C4 Model Sample Deployment Diagram](https://github.com/plantuml-stdlib/C4-PlantUML/blob/master/samples/C4_Deployment%20Diagram%20Sample%20-%20bigbankplc-details.puml)
 
 !!! info "Deployment Diagram Details"
 
